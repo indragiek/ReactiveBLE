@@ -1,0 +1,480 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0308E0BE18BBF7850094E105 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E0BD18BBF7850094E105 /* Cocoa.framework */; };
+		0308E0C818BBF7850094E105 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0308E0C618BBF7850094E105 /* InfoPlist.strings */; };
+		0308E0CC18BBF7850094E105 /* ReactiveBLE.m in Sources */ = {isa = PBXBuildFile; fileRef = 0308E0CB18BBF7850094E105 /* ReactiveBLE.m */; };
+		0308E0D318BBF7850094E105 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E0D218BBF7850094E105 /* XCTest.framework */; };
+		0308E0D418BBF7850094E105 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E0BD18BBF7850094E105 /* Cocoa.framework */; };
+		0308E0D718BBF7850094E105 /* ReactiveBLE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E0BA18BBF7850094E105 /* ReactiveBLE.framework */; };
+		0308E0DD18BBF7850094E105 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0308E0DB18BBF7850094E105 /* InfoPlist.strings */; };
+		0308E0DF18BBF7850094E105 /* ReactiveBLETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0308E0DE18BBF7850094E105 /* ReactiveBLETests.m */; };
+		0308E16318BBFC1F0094E105 /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E16218BBFC1F0094E105 /* IOBluetooth.framework */; };
+		0308E16618BBFDBD0094E105 /* CBCentralManager+RBTAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0308E16418BBFDBD0094E105 /* CBCentralManager+RBTAdditions.h */; };
+		0308E16718BBFDBD0094E105 /* CBCentralManager+RBTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0308E16518BBFDBD0094E105 /* CBCentralManager+RBTAdditions.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0308E0D518BBF7850094E105 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0308E0B118BBF7850094E105 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0308E0B918BBF7850094E105;
+			remoteInfo = ReactiveBLE;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0308E0BA18BBF7850094E105 /* ReactiveBLE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveBLE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0308E0BD18BBF7850094E105 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		0308E0C018BBF7850094E105 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0308E0C118BBF7850094E105 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0308E0C218BBF7850094E105 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		0308E0C518BBF7850094E105 /* ReactiveBLE-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReactiveBLE-Info.plist"; sourceTree = "<group>"; };
+		0308E0C718BBF7850094E105 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0308E0C918BBF7850094E105 /* ReactiveBLE-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactiveBLE-Prefix.pch"; sourceTree = "<group>"; };
+		0308E0CA18BBF7850094E105 /* ReactiveBLE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactiveBLE.h; sourceTree = "<group>"; };
+		0308E0CB18BBF7850094E105 /* ReactiveBLE.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveBLE.m; sourceTree = "<group>"; };
+		0308E0D118BBF7850094E105 /* ReactiveBLETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveBLETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0308E0D218BBF7850094E105 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		0308E0DA18BBF7850094E105 /* ReactiveBLETests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReactiveBLETests-Info.plist"; sourceTree = "<group>"; };
+		0308E0DC18BBF7850094E105 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0308E0DE18BBF7850094E105 /* ReactiveBLETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveBLETests.m; sourceTree = "<group>"; };
+		0308E16218BBFC1F0094E105 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = System/Library/Frameworks/IOBluetooth.framework; sourceTree = SDKROOT; };
+		0308E16418BBFDBD0094E105 /* CBCentralManager+RBTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBCentralManager+RBTAdditions.h"; sourceTree = "<group>"; };
+		0308E16518BBFDBD0094E105 /* CBCentralManager+RBTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBCentralManager+RBTAdditions.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0308E0B618BBF7850094E105 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0308E16318BBFC1F0094E105 /* IOBluetooth.framework in Frameworks */,
+				0308E0BE18BBF7850094E105 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0308E0CE18BBF7850094E105 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0308E0D418BBF7850094E105 /* Cocoa.framework in Frameworks */,
+				0308E0D318BBF7850094E105 /* XCTest.framework in Frameworks */,
+				0308E0D718BBF7850094E105 /* ReactiveBLE.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0308E0B018BBF7850094E105 = {
+			isa = PBXGroup;
+			children = (
+				0308E0C318BBF7850094E105 /* ReactiveBLE */,
+				0308E0D818BBF7850094E105 /* ReactiveBLETests */,
+				0308E0BC18BBF7850094E105 /* Frameworks */,
+				0308E0BB18BBF7850094E105 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0308E0BB18BBF7850094E105 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0308E0BA18BBF7850094E105 /* ReactiveBLE.framework */,
+				0308E0D118BBF7850094E105 /* ReactiveBLETests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0308E0BC18BBF7850094E105 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0308E16218BBFC1F0094E105 /* IOBluetooth.framework */,
+				0308E0BD18BBF7850094E105 /* Cocoa.framework */,
+				0308E0D218BBF7850094E105 /* XCTest.framework */,
+				0308E0BF18BBF7850094E105 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0308E0BF18BBF7850094E105 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0308E0C018BBF7850094E105 /* Foundation.framework */,
+				0308E0C118BBF7850094E105 /* CoreData.framework */,
+				0308E0C218BBF7850094E105 /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		0308E0C318BBF7850094E105 /* ReactiveBLE */ = {
+			isa = PBXGroup;
+			children = (
+				0308E0CA18BBF7850094E105 /* ReactiveBLE.h */,
+				0308E0CB18BBF7850094E105 /* ReactiveBLE.m */,
+				0308E0C418BBF7850094E105 /* Supporting Files */,
+				0308E16418BBFDBD0094E105 /* CBCentralManager+RBTAdditions.h */,
+				0308E16518BBFDBD0094E105 /* CBCentralManager+RBTAdditions.m */,
+			);
+			path = ReactiveBLE;
+			sourceTree = "<group>";
+		};
+		0308E0C418BBF7850094E105 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0308E0C518BBF7850094E105 /* ReactiveBLE-Info.plist */,
+				0308E0C618BBF7850094E105 /* InfoPlist.strings */,
+				0308E0C918BBF7850094E105 /* ReactiveBLE-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0308E0D818BBF7850094E105 /* ReactiveBLETests */ = {
+			isa = PBXGroup;
+			children = (
+				0308E0DE18BBF7850094E105 /* ReactiveBLETests.m */,
+				0308E0D918BBF7850094E105 /* Supporting Files */,
+			);
+			path = ReactiveBLETests;
+			sourceTree = "<group>";
+		};
+		0308E0D918BBF7850094E105 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0308E0DA18BBF7850094E105 /* ReactiveBLETests-Info.plist */,
+				0308E0DB18BBF7850094E105 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0308E0B718BBF7850094E105 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0308E16618BBFDBD0094E105 /* CBCentralManager+RBTAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0308E0B918BBF7850094E105 /* ReactiveBLE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0308E0E218BBF7850094E105 /* Build configuration list for PBXNativeTarget "ReactiveBLE" */;
+			buildPhases = (
+				0308E0B518BBF7850094E105 /* Sources */,
+				0308E0B618BBF7850094E105 /* Frameworks */,
+				0308E0B718BBF7850094E105 /* Headers */,
+				0308E0B818BBF7850094E105 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReactiveBLE;
+			productName = ReactiveBLE;
+			productReference = 0308E0BA18BBF7850094E105 /* ReactiveBLE.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0308E0D018BBF7850094E105 /* ReactiveBLETests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0308E0E518BBF7850094E105 /* Build configuration list for PBXNativeTarget "ReactiveBLETests" */;
+			buildPhases = (
+				0308E0CD18BBF7850094E105 /* Sources */,
+				0308E0CE18BBF7850094E105 /* Frameworks */,
+				0308E0CF18BBF7850094E105 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0308E0D618BBF7850094E105 /* PBXTargetDependency */,
+			);
+			name = ReactiveBLETests;
+			productName = ReactiveBLETests;
+			productReference = 0308E0D118BBF7850094E105 /* ReactiveBLETests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0308E0B118BBF7850094E105 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Indragie Karunaratne";
+				TargetAttributes = {
+					0308E0D018BBF7850094E105 = {
+						TestTargetID = 0308E0B918BBF7850094E105;
+					};
+				};
+			};
+			buildConfigurationList = 0308E0B418BBF7850094E105 /* Build configuration list for PBXProject "ReactiveBLE" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0308E0B018BBF7850094E105;
+			productRefGroup = 0308E0BB18BBF7850094E105 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0308E0B918BBF7850094E105 /* ReactiveBLE */,
+				0308E0D018BBF7850094E105 /* ReactiveBLETests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0308E0B818BBF7850094E105 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0308E0C818BBF7850094E105 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0308E0CF18BBF7850094E105 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0308E0DD18BBF7850094E105 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0308E0B518BBF7850094E105 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0308E0CC18BBF7850094E105 /* ReactiveBLE.m in Sources */,
+				0308E16718BBFDBD0094E105 /* CBCentralManager+RBTAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0308E0CD18BBF7850094E105 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0308E0DF18BBF7850094E105 /* ReactiveBLETests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0308E0D618BBF7850094E105 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0308E0B918BBF7850094E105 /* ReactiveBLE */;
+			targetProxy = 0308E0D518BBF7850094E105 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0308E0C618BBF7850094E105 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0308E0C718BBF7850094E105 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0308E0DB18BBF7850094E105 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0308E0DC18BBF7850094E105 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0308E0E018BBF7850094E105 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0308E0E118BBF7850094E105 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0308E0E318BBF7850094E105 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReactiveBLE/ReactiveBLE-Prefix.pch";
+				INFOPLIST_FILE = "ReactiveBLE/ReactiveBLE-Info.plist";
+				INSTALL_PATH = "@rpath";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		0308E0E418BBF7850094E105 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReactiveBLE/ReactiveBLE-Prefix.pch";
+				INFOPLIST_FILE = "ReactiveBLE/ReactiveBLE-Info.plist";
+				INSTALL_PATH = "@rpath";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		0308E0E618BBF7850094E105 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ReactiveBLE.framework/Versions/A/ReactiveBLE";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReactiveBLE/ReactiveBLE-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ReactiveBLETests/ReactiveBLETests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		0308E0E718BBF7850094E105 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ReactiveBLE.framework/Versions/A/ReactiveBLE";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReactiveBLE/ReactiveBLE-Prefix.pch";
+				INFOPLIST_FILE = "ReactiveBLETests/ReactiveBLETests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0308E0B418BBF7850094E105 /* Build configuration list for PBXProject "ReactiveBLE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0308E0E018BBF7850094E105 /* Debug */,
+				0308E0E118BBF7850094E105 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0308E0E218BBF7850094E105 /* Build configuration list for PBXNativeTarget "ReactiveBLE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0308E0E318BBF7850094E105 /* Debug */,
+				0308E0E418BBF7850094E105 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0308E0E518BBF7850094E105 /* Build configuration list for PBXNativeTarget "ReactiveBLETests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0308E0E618BBF7850094E105 /* Debug */,
+				0308E0E718BBF7850094E105 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0308E0B118BBF7850094E105 /* Project object */;
+}
