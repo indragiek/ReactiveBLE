@@ -16,10 +16,10 @@
 		0308E0DD18BBF7850094E105 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0308E0DB18BBF7850094E105 /* InfoPlist.strings */; };
 		0308E0DF18BBF7850094E105 /* ReactiveBLETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0308E0DE18BBF7850094E105 /* ReactiveBLETests.m */; };
 		0308E16318BBFC1F0094E105 /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E16218BBFC1F0094E105 /* IOBluetooth.framework */; };
-		0308E16618BBFDBD0094E105 /* CBCentralManager+RBTAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0308E16418BBFDBD0094E105 /* CBCentralManager+RBTAdditions.h */; };
-		0308E16718BBFDBD0094E105 /* CBCentralManager+RBTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0308E16518BBFDBD0094E105 /* CBCentralManager+RBTAdditions.m */; };
 		0308E18418BBFEED0094E105 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E17518BBFEE20094E105 /* ReactiveCocoa.framework */; };
 		0308E18618BBFEF80094E105 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0308E17518BBFEE20094E105 /* ReactiveCocoa.framework */; };
+		037D986F18BE832B00586C5C /* RBTCentralManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 037D986D18BE832B00586C5C /* RBTCentralManager.h */; };
+		037D987018BE832B00586C5C /* RBTCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 037D986E18BE832B00586C5C /* RBTCentralManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,9 +118,9 @@
 		0308E0DC18BBF7850094E105 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0308E0DE18BBF7850094E105 /* ReactiveBLETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveBLETests.m; sourceTree = "<group>"; };
 		0308E16218BBFC1F0094E105 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = System/Library/Frameworks/IOBluetooth.framework; sourceTree = SDKROOT; };
-		0308E16418BBFDBD0094E105 /* CBCentralManager+RBTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBCentralManager+RBTAdditions.h"; sourceTree = "<group>"; };
-		0308E16518BBFDBD0094E105 /* CBCentralManager+RBTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBCentralManager+RBTAdditions.m"; sourceTree = "<group>"; };
 		0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = External/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
+		037D986D18BE832B00586C5C /* RBTCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBTCentralManager.h; sourceTree = "<group>"; };
+		037D986E18BE832B00586C5C /* RBTCentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBTCentralManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,9 +193,9 @@
 			children = (
 				0308E0CA18BBF7850094E105 /* ReactiveBLE.h */,
 				0308E0CB18BBF7850094E105 /* ReactiveBLE.m */,
-				0308E16418BBFDBD0094E105 /* CBCentralManager+RBTAdditions.h */,
-				0308E16518BBFDBD0094E105 /* CBCentralManager+RBTAdditions.m */,
 				0308E0C418BBF7850094E105 /* Supporting Files */,
+				037D986D18BE832B00586C5C /* RBTCentralManager.h */,
+				037D986E18BE832B00586C5C /* RBTCentralManager.m */,
 			);
 			path = ReactiveBLE;
 			sourceTree = "<group>";
@@ -249,7 +249,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0308E16618BBFDBD0094E105 /* CBCentralManager+RBTAdditions.h in Headers */,
+				037D986F18BE832B00586C5C /* RBTCentralManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,8 +409,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				037D987018BE832B00586C5C /* RBTCentralManager.m in Sources */,
 				0308E0CC18BBF7850094E105 /* ReactiveBLE.m in Sources */,
-				0308E16718BBFDBD0094E105 /* CBCentralManager+RBTAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
