@@ -27,8 +27,8 @@
 - (id)initWithOptions:(NSDictionary *)options
 {
 	if ((self = [super init])) {
-		_CBQueue = dispatch_queue_create("com.indragie.RBTCentralManager.DelegateQueue", DISPATCH_QUEUE_SERIAL);
-		_CBScheduler = [[RACTargetQueueScheduler alloc] initWithName:@"com.indragie.RBTCentralManager.DelegateQueueScheduler" targetQueue:_CBQueue];
+		_CBQueue = dispatch_queue_create("com.indragie.RBTCentralManager.CoreBluetoothQueue", DISPATCH_QUEUE_SERIAL);
+		_CBScheduler = [[RACTargetQueueScheduler alloc] initWithName:@"com.indragie.RBTCentralManager.CoreBluetoothScheduler" targetQueue:_CBQueue];
 		_manager = [[CBCentralManager alloc] initWithDelegate:self queue:_CBQueue options:options];
 	}
 	return self;
