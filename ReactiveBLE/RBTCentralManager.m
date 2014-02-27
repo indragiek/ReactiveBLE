@@ -56,7 +56,7 @@
 		return @(manager.state);
 	}]
 	takeUntil:self.rac_willDeallocSignal]
-	setNameWithFormat:@"RBTCentralManager -rbt_stateSignal"];
+	setNameWithFormat:@"RBTCentralManager -stateSignal"];
 }
 
 #pragma mark - CBCentralManagerDelegate
