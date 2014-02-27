@@ -50,9 +50,9 @@
 			return [RACSignal return:self.manager];
 		}]
 		concat:[[self rac_signalForSelector:@selector(centralManagerDidUpdateState:) fromProtocol:@protocol(CBCentralManagerDelegate)]
-		reduceEach:^(CBCentralManager *manager) {
-			return manager;
-		}]]
+			reduceEach:^(CBCentralManager *manager) {
+				return manager;
+			}]]
 		map:^(CBCentralManager *manager) {
 			return @(manager.state);
 		}]
