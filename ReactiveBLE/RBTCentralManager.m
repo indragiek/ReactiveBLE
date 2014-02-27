@@ -128,6 +128,31 @@
 	setNameWithFormat:@"RBTCentralManager -connectToPeripheral: %@ options: %@", peripheral, options];
 }
 
+- (RACSignal *)disconnectPeripheral:(CBPeripheral *)peripheral
+{
+	return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+		RACSerialDisposable *disposable = [[RACSerialDisposable alloc] init];
+		[self.CBScheduler schedule:^{
+			[self.manager cancelPeripheralConnection:peripheral];
+			disposable.disposable = [[[self
+				rac_signalForSelector:@selector(centralManager:didDisconnectPeripheral:error:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+				filter:^BOOL(RACTuple *args) {
+					return [args.second isEqual:peripheral];
+				}]
+				subscribeNext:^(RACTuple *args) {
+					NSError *error = args.third;
+					if (error != nil) {
+						[subscriber sendError:error];
+					} else {
+						[subscriber sendCompleted];
+					}
+				}];
+		}];
+		return disposable;
+	}]
+	setNameWithFormat:@"RBTCentralManager -disconnectPeripheral: %@", peripheral];
+}
+
 #pragma mark - CBCentralManagerDelegate
 
 // Empty implementation because it's a required method.

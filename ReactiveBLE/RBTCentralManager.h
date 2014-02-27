@@ -57,4 +57,14 @@
  */
 - (RACSignal *)connectPeripheral:(CBPeripheral *)peripheral options:(NSDictionary *)options;
 
+/**
+ *  Disconnects an already connected or connecting Bluetooth peripheral.
+ *
+ *  @param peripheral The peripheral to disconnect.
+ *
+ *  @return A signal that completes when the peripheral is disconnected, or errors if there was
+ *  an error during disconnection.
+ */
+- (RACSignal *)disconnectPeripheral:(CBPeripheral *)peripheral;
+
 @end
