@@ -44,7 +44,7 @@
 - (RACSignal *)stateSignal
 {
 	@weakify(self);
-	return [[[[RACSignal
+	return [[[[[RACSignal
 		defer:^{
 			@strongify(self);
 			return [RACSignal return:self.manager];
@@ -56,6 +56,7 @@
 		map:^(CBCentralManager *manager) {
 			return @(manager.state);
 		}]
+		takeUntil:self.rac_willDeallocSignal]
 		setNameWithFormat:@"RBTCentralManager -stateSignal"];
 }
 
