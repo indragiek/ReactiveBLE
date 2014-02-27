@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0308E0BE18BBF7850094E105 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E0BD18BBF7850094E105 /* Cocoa.framework */; };
 		0308E0C818BBF7850094E105 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0308E0C618BBF7850094E105 /* InfoPlist.strings */; };
-		0308E0D318BBF7850094E105 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E0D218BBF7850094E105 /* XCTest.framework */; };
 		0308E0D418BBF7850094E105 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E0BD18BBF7850094E105 /* Cocoa.framework */; };
 		0308E0D718BBF7850094E105 /* ReactiveBLE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E0BA18BBF7850094E105 /* ReactiveBLE.framework */; };
 		0308E0DD18BBF7850094E105 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0308E0DB18BBF7850094E105 /* InfoPlist.strings */; };
@@ -25,6 +24,8 @@
 		03B98D8218BED37200366C75 /* libSpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B98D7018BED22F00366C75 /* libSpecta.a */; };
 		03B98D8518BED3BE00366C75 /* RBTCentralManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B98D8418BED3BE00366C75 /* RBTCentralManagerSpec.m */; };
 		03B98D8818BED7F100366C75 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B98D8718BED7F100366C75 /* SenTestingKit.framework */; };
+		03B98D8918BEDCA100366C75 /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E16218BBFC1F0094E105 /* IOBluetooth.framework */; };
+		03B98D8B18BEE25500366C75 /* ReactiveBLE.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E0BA18BBF7850094E105 /* ReactiveBLE.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +175,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		03B98D8A18BEE1E400366C75 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				03B98D8B18BEE25500366C75 /* ReactiveBLE.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -186,7 +198,7 @@
 		0308E0C718BBF7850094E105 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0308E0C918BBF7850094E105 /* ReactiveBLE-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactiveBLE-Prefix.pch"; sourceTree = "<group>"; };
 		0308E0CA18BBF7850094E105 /* ReactiveBLE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactiveBLE.h; sourceTree = "<group>"; };
-		0308E0D118BBF7850094E105 /* ReactiveBLETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveBLETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0308E0D118BBF7850094E105 /* ReactiveBLETests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveBLETests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0308E0D218BBF7850094E105 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0308E0DA18BBF7850094E105 /* ReactiveBLETests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReactiveBLETests-Info.plist"; sourceTree = "<group>"; };
 		0308E0DC18BBF7850094E105 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -218,11 +230,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03B98D8918BEDCA100366C75 /* IOBluetooth.framework in Frameworks */,
 				03B98D8818BED7F100366C75 /* SenTestingKit.framework in Frameworks */,
 				03B98D8218BED37200366C75 /* libSpecta.a in Frameworks */,
 				03B98D8118BED36E00366C75 /* libExpecta.a in Frameworks */,
 				0308E0D418BBF7850094E105 /* Cocoa.framework in Frameworks */,
-				0308E0D318BBF7850094E105 /* XCTest.framework in Frameworks */,
 				0308E0D718BBF7850094E105 /* ReactiveBLE.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,7 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				0308E0BA18BBF7850094E105 /* ReactiveBLE.framework */,
-				0308E0D118BBF7850094E105 /* ReactiveBLETests.xctest */,
+				0308E0D118BBF7850094E105 /* ReactiveBLETests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -411,6 +423,7 @@
 				0308E0CD18BBF7850094E105 /* Sources */,
 				0308E0CE18BBF7850094E105 /* Frameworks */,
 				0308E0CF18BBF7850094E105 /* Resources */,
+				03B98D8A18BEE1E400366C75 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -421,7 +434,7 @@
 			);
 			name = ReactiveBLETests;
 			productName = ReactiveBLETests;
-			productReference = 0308E0D118BBF7850094E105 /* ReactiveBLETests.xctest */;
+			productReference = 0308E0D118BBF7850094E105 /* ReactiveBLETests.octest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -785,15 +798,10 @@
 					"\"$(PROJECT_DIR)/External/expecta/src\"/**",
 				);
 				INFOPLIST_FILE = "ReactiveBLETests/ReactiveBLETests-Info.plist";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					XCTest,
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -815,15 +823,10 @@
 					"\"$(PROJECT_DIR)/External/expecta/src\"/**",
 				);
 				INFOPLIST_FILE = "ReactiveBLETests/ReactiveBLETests-Info.plist";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					XCTest,
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
