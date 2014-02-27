@@ -34,12 +34,15 @@
 /**
  *  Scans for peripherals that are advertising services.
  *
+ *  A signal returned by this method will complete if this method is called again with different
+ *  parameters, since only one scanning session is supported per manager.
+ *
  *  @param services An array of CBUUID objects representing services that the app is interested in.
  *  @param options  An optional dictionary specifying options to customize the scan.
  *
  *  @return A signal that sends a tuple containing a discovered `CBPeripheral`, an `NSDictionary`
  *  containing advertisement data, and an `NSNumber` representing the RSSI.
  */
-- (RACSignal *)rbt_scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options;
+- (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options;
 
 @end
