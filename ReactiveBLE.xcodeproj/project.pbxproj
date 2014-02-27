@@ -9,17 +9,19 @@
 /* Begin PBXBuildFile section */
 		0308E0BE18BBF7850094E105 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E0BD18BBF7850094E105 /* Cocoa.framework */; };
 		0308E0C818BBF7850094E105 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0308E0C618BBF7850094E105 /* InfoPlist.strings */; };
-		0308E0CC18BBF7850094E105 /* ReactiveBLE.m in Sources */ = {isa = PBXBuildFile; fileRef = 0308E0CB18BBF7850094E105 /* ReactiveBLE.m */; };
 		0308E0D318BBF7850094E105 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E0D218BBF7850094E105 /* XCTest.framework */; };
 		0308E0D418BBF7850094E105 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E0BD18BBF7850094E105 /* Cocoa.framework */; };
 		0308E0D718BBF7850094E105 /* ReactiveBLE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E0BA18BBF7850094E105 /* ReactiveBLE.framework */; };
 		0308E0DD18BBF7850094E105 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0308E0DB18BBF7850094E105 /* InfoPlist.strings */; };
 		0308E0DF18BBF7850094E105 /* ReactiveBLETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0308E0DE18BBF7850094E105 /* ReactiveBLETests.m */; };
 		0308E16318BBFC1F0094E105 /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E16218BBFC1F0094E105 /* IOBluetooth.framework */; };
-		0308E18418BBFEED0094E105 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E17518BBFEE20094E105 /* ReactiveCocoa.framework */; };
-		0308E18618BBFEF80094E105 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0308E17518BBFEE20094E105 /* ReactiveCocoa.framework */; };
-		037D986F18BE832B00586C5C /* RBTCentralManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 037D986D18BE832B00586C5C /* RBTCentralManager.h */; };
+		037D986F18BE832B00586C5C /* RBTCentralManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 037D986D18BE832B00586C5C /* RBTCentralManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		037D987018BE832B00586C5C /* RBTCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 037D986E18BE832B00586C5C /* RBTCentralManager.m */; };
+		03B98D4418BEC65D00366C75 /* EXTScope.h in Headers */ = {isa = PBXBuildFile; fileRef = 03B98D4218BEC65D00366C75 /* EXTScope.h */; };
+		03B98D4518BEC65D00366C75 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B98D4318BEC65D00366C75 /* EXTScope.m */; };
+		03B98D4818BEC6FF00366C75 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B98D3418BEC5EE00366C75 /* ReactiveCocoa.framework */; };
+		03B98D4918BEC70400366C75 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03B98D3418BEC5EE00366C75 /* ReactiveCocoa.framework */; };
+		03B98D5818BEC84100366C75 /* ReactiveBLE.h in Headers */ = {isa = PBXBuildFile; fileRef = 0308E0CA18BBF7850094E105 /* ReactiveBLE.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,56 +32,56 @@
 			remoteGlobalIDString = 0308E0B918BBF7850094E105;
 			remoteInfo = ReactiveBLE;
 		};
-		0308E17418BBFEE20094E105 /* PBXContainerItemProxy */ = {
+		03B98D3318BEC5EE00366C75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 88037F8315056328001A5B19;
 			remoteInfo = ReactiveCocoa;
 		};
-		0308E17618BBFEE20094E105 /* PBXContainerItemProxy */ = {
+		03B98D3518BEC5EE00366C75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 88F440AB153DAC820097B4C3;
 			remoteInfo = "ReactiveCocoa-iOS";
 		};
-		0308E17818BBFEE20094E105 /* PBXContainerItemProxy */ = {
+		03B98D3718BEC5EE00366C75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 88CDF7DC15000FCF00163A9F;
 			remoteInfo = ReactiveCocoaTests;
 		};
-		0308E17A18BBFEE20094E105 /* PBXContainerItemProxy */ = {
+		03B98D3918BEC5EE00366C75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 5FAF5223174D4C2000CAC810;
 			remoteInfo = "ReactiveCocoaTests-iOS";
 		};
-		0308E17C18BBFEE20094E105 /* PBXContainerItemProxy */ = {
+		03B98D3B18BEC5EE00366C75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 1860F412177C91B500C7B3C9;
 			remoteInfo = "ReactiveCocoa-iOS-UIKitTestHost";
 		};
-		0308E17E18BBFEE20094E105 /* PBXContainerItemProxy */ = {
+		03B98D3D18BEC5EE00366C75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 1860F430177C91B500C7B3C9;
 			remoteInfo = "ReactiveCocoa-iOS-UIKitTestHostTests";
 		};
-		0308E18018BBFEE20094E105 /* PBXContainerItemProxy */ = {
+		03B98D3F18BEC5EE00366C75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D05AD39417F2D56F0080895B;
 			remoteInfo = "ReactiveCocoa-Mac";
 		};
-		0308E18218BBFEE90094E105 /* PBXContainerItemProxy */ = {
+		03B98D4618BEC6FC00366C75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */;
 			proxyType = 1;
@@ -95,7 +97,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0308E18618BBFEF80094E105 /* ReactiveCocoa.framework in CopyFiles */,
+				03B98D4918BEC70400366C75 /* ReactiveCocoa.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,16 +113,17 @@
 		0308E0C718BBF7850094E105 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0308E0C918BBF7850094E105 /* ReactiveBLE-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactiveBLE-Prefix.pch"; sourceTree = "<group>"; };
 		0308E0CA18BBF7850094E105 /* ReactiveBLE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactiveBLE.h; sourceTree = "<group>"; };
-		0308E0CB18BBF7850094E105 /* ReactiveBLE.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveBLE.m; sourceTree = "<group>"; };
 		0308E0D118BBF7850094E105 /* ReactiveBLETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveBLETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0308E0D218BBF7850094E105 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0308E0DA18BBF7850094E105 /* ReactiveBLETests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReactiveBLETests-Info.plist"; sourceTree = "<group>"; };
 		0308E0DC18BBF7850094E105 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0308E0DE18BBF7850094E105 /* ReactiveBLETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveBLETests.m; sourceTree = "<group>"; };
 		0308E16218BBFC1F0094E105 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = System/Library/Frameworks/IOBluetooth.framework; sourceTree = SDKROOT; };
-		0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = External/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
+		0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = ../External/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
 		037D986D18BE832B00586C5C /* RBTCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBTCentralManager.h; sourceTree = "<group>"; };
 		037D986E18BE832B00586C5C /* RBTCentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBTCentralManager.m; sourceTree = "<group>"; };
+		03B98D4218BEC65D00366C75 /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTScope.h; path = External/libextobjc/extobjc/EXTScope.h; sourceTree = SOURCE_ROOT; };
+		03B98D4318BEC65D00366C75 /* EXTScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXTScope.m; path = External/libextobjc/extobjc/EXTScope.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0308E18418BBFEED0094E105 /* ReactiveCocoa.framework in Frameworks */,
+				03B98D4818BEC6FF00366C75 /* ReactiveCocoa.framework in Frameworks */,
 				0308E16318BBFC1F0094E105 /* IOBluetooth.framework in Frameworks */,
 				0308E0BE18BBF7850094E105 /* Cocoa.framework in Frameworks */,
 			);
@@ -150,7 +153,6 @@
 		0308E0B018BBF7850094E105 = {
 			isa = PBXGroup;
 			children = (
-				0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */,
 				0308E0C318BBF7850094E105 /* ReactiveBLE */,
 				0308E0D818BBF7850094E105 /* ReactiveBLETests */,
 				0308E0BC18BBF7850094E105 /* Frameworks */,
@@ -191,8 +193,8 @@
 		0308E0C318BBF7850094E105 /* ReactiveBLE */ = {
 			isa = PBXGroup;
 			children = (
+				03B98D2118BEC5E900366C75 /* External */,
 				0308E0CA18BBF7850094E105 /* ReactiveBLE.h */,
-				0308E0CB18BBF7850094E105 /* ReactiveBLE.m */,
 				0308E0C418BBF7850094E105 /* Supporting Files */,
 				037D986D18BE832B00586C5C /* RBTCentralManager.h */,
 				037D986E18BE832B00586C5C /* RBTCentralManager.m */,
@@ -228,18 +230,36 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0308E16918BBFEE20094E105 /* Products */ = {
+		03B98D2118BEC5E900366C75 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				0308E17518BBFEE20094E105 /* ReactiveCocoa.framework */,
-				0308E17718BBFEE20094E105 /* libReactiveCocoa-iOS.a */,
-				0308E17918BBFEE20094E105 /* ReactiveCocoaTests.octest */,
-				0308E17B18BBFEE20094E105 /* ReactiveCocoaTests-iOS.octest */,
-				0308E17D18BBFEE20094E105 /* ReactiveCocoa-iOS-UIKitTestHost.app */,
-				0308E17F18BBFEE20094E105 /* ReactiveCocoa-iOS-UIKitTestHostTests.octest */,
-				0308E18118BBFEE20094E105 /* libReactiveCocoa-Mac.a */,
+				03B98D4118BEC5F100366C75 /* libextobjc */,
+				0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		03B98D2A18BEC5EE00366C75 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03B98D3418BEC5EE00366C75 /* ReactiveCocoa.framework */,
+				03B98D3618BEC5EE00366C75 /* libReactiveCocoa-iOS.a */,
+				03B98D3818BEC5EE00366C75 /* ReactiveCocoaTests.octest */,
+				03B98D3A18BEC5EE00366C75 /* ReactiveCocoaTests-iOS.octest */,
+				03B98D3C18BEC5EE00366C75 /* ReactiveCocoa-iOS-UIKitTestHost.app */,
+				03B98D3E18BEC5EE00366C75 /* ReactiveCocoa-iOS-UIKitTestHostTests.octest */,
+				03B98D4018BEC5EE00366C75 /* libReactiveCocoa-Mac.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		03B98D4118BEC5F100366C75 /* libextobjc */ = {
+			isa = PBXGroup;
+			children = (
+				03B98D4218BEC65D00366C75 /* EXTScope.h */,
+				03B98D4318BEC65D00366C75 /* EXTScope.m */,
+			);
+			name = libextobjc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +270,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				037D986F18BE832B00586C5C /* RBTCentralManager.h in Headers */,
+				03B98D5818BEC84100366C75 /* ReactiveBLE.h in Headers */,
+				03B98D4418BEC65D00366C75 /* EXTScope.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +291,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				0308E18318BBFEE90094E105 /* PBXTargetDependency */,
+				03B98D4718BEC6FC00366C75 /* PBXTargetDependency */,
 			);
 			name = ReactiveBLE;
 			productName = ReactiveBLE;
@@ -321,7 +343,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 0308E16918BBFEE20094E105 /* Products */;
+					ProductGroup = 03B98D2A18BEC5EE00366C75 /* Products */;
 					ProjectRef = 0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */;
 				},
 			);
@@ -334,53 +356,53 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		0308E17518BBFEE20094E105 /* ReactiveCocoa.framework */ = {
+		03B98D3418BEC5EE00366C75 /* ReactiveCocoa.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ReactiveCocoa.framework;
-			remoteRef = 0308E17418BBFEE20094E105 /* PBXContainerItemProxy */;
+			remoteRef = 03B98D3318BEC5EE00366C75 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0308E17718BBFEE20094E105 /* libReactiveCocoa-iOS.a */ = {
+		03B98D3618BEC5EE00366C75 /* libReactiveCocoa-iOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libReactiveCocoa-iOS.a";
-			remoteRef = 0308E17618BBFEE20094E105 /* PBXContainerItemProxy */;
+			remoteRef = 03B98D3518BEC5EE00366C75 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0308E17918BBFEE20094E105 /* ReactiveCocoaTests.octest */ = {
+		03B98D3818BEC5EE00366C75 /* ReactiveCocoaTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ReactiveCocoaTests.octest;
-			remoteRef = 0308E17818BBFEE20094E105 /* PBXContainerItemProxy */;
+			remoteRef = 03B98D3718BEC5EE00366C75 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0308E17B18BBFEE20094E105 /* ReactiveCocoaTests-iOS.octest */ = {
+		03B98D3A18BEC5EE00366C75 /* ReactiveCocoaTests-iOS.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = "ReactiveCocoaTests-iOS.octest";
-			remoteRef = 0308E17A18BBFEE20094E105 /* PBXContainerItemProxy */;
+			remoteRef = 03B98D3918BEC5EE00366C75 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0308E17D18BBFEE20094E105 /* ReactiveCocoa-iOS-UIKitTestHost.app */ = {
+		03B98D3C18BEC5EE00366C75 /* ReactiveCocoa-iOS-UIKitTestHost.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = "ReactiveCocoa-iOS-UIKitTestHost.app";
-			remoteRef = 0308E17C18BBFEE20094E105 /* PBXContainerItemProxy */;
+			remoteRef = 03B98D3B18BEC5EE00366C75 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0308E17F18BBFEE20094E105 /* ReactiveCocoa-iOS-UIKitTestHostTests.octest */ = {
+		03B98D3E18BEC5EE00366C75 /* ReactiveCocoa-iOS-UIKitTestHostTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = "ReactiveCocoa-iOS-UIKitTestHostTests.octest";
-			remoteRef = 0308E17E18BBFEE20094E105 /* PBXContainerItemProxy */;
+			remoteRef = 03B98D3D18BEC5EE00366C75 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0308E18118BBFEE20094E105 /* libReactiveCocoa-Mac.a */ = {
+		03B98D4018BEC5EE00366C75 /* libReactiveCocoa-Mac.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libReactiveCocoa-Mac.a";
-			remoteRef = 0308E18018BBFEE20094E105 /* PBXContainerItemProxy */;
+			remoteRef = 03B98D3F18BEC5EE00366C75 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -409,8 +431,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03B98D4518BEC65D00366C75 /* EXTScope.m in Sources */,
 				037D987018BE832B00586C5C /* RBTCentralManager.m in Sources */,
-				0308E0CC18BBF7850094E105 /* ReactiveBLE.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,10 +452,10 @@
 			target = 0308E0B918BBF7850094E105 /* ReactiveBLE */;
 			targetProxy = 0308E0D518BBF7850094E105 /* PBXContainerItemProxy */;
 		};
-		0308E18318BBFEE90094E105 /* PBXTargetDependency */ = {
+		03B98D4718BEC6FC00366C75 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ReactiveCocoa;
-			targetProxy = 0308E18218BBFEE90094E105 /* PBXContainerItemProxy */;
+			targetProxy = 03B98D4618BEC6FC00366C75 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

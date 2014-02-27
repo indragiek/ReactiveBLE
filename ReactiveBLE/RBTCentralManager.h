@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 /**
  *  ReactiveCocoa interface to `CBCentralManager`
@@ -14,12 +15,12 @@
 @interface RBTCentralManager : NSObject
 
 /**
- *  Creates a new instance of `CBCentralManager`
+ *  Creates a new instance of `RBTCentralManager`
  *
  *  @param options Optional dictionary of options as described in "Central Manager Initialization Options"
  *  in the `CBCentralManager` documentation.
  *
- *  @return A new instance of `CBCentralManager`
+ *  @return A new instance of `RBTCentralManager`
  */
 - (id)initWithOptions:(NSDictionary *)options;
 

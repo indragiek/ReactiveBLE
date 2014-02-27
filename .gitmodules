@@ -1,3 +1,6 @@
 [submodule "External/ReactiveCocoa"]
 	path = External/ReactiveCocoa
 	url = https://github.com/ReactiveCocoa/ReactiveCocoa.git
+[submodule "External/libextobjc"]
+	path = External/libextobjc
+	url = https://github.com/jspahrsummers/libextobjc.git

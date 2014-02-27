@@ -43,12 +43,25 @@
 
 - (RACSignal *)rbt_stateSignal
 {
-	return [[[[self rac_signalForSelector:@selector(centralManagerDidUpdateState:) fromProtocol:@protocol(CBCentralManagerDelegate)]
-			reduceEach:^(CBCentralManager *manager) {
-				return @(manager.state);
-			}]
-			startWith:@(self.manager.state)]
-			setNameWithFormat:@"RBTCentralManager -rbt_stateSignal"];
+	@weakify(self);
+	return [[[[[RACSignal defer:^RACSignal *{
+		@strongify(self);
+		return [RACSignal return:self.manager];
+	}]
+	concat:[[self rac_signalForSelector:@selector(centralManagerDidUpdateState:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+		reduceEach:^(CBCentralManager *manager) {
+			return manager;
+		}]]
+	map:^(CBCentralManager *manager) {
+		return @(manager.state);
+	}]
+	takeUntil:self.rac_willDeallocSignal]
+	setNameWithFormat:@"RBTCentralManager -rbt_stateSignal"];
 }
+
+#pragma mark - CBCentralManagerDelegate
+
+// Empty implementation because it's a required method.
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central {}
 
 @end
