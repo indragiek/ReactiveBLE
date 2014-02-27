@@ -86,7 +86,48 @@
 		}]]
 	setNameWithFormat:@"RBTCentralManager rbt_scanForPeripheralsWithServices: %@ options: %@", services, options];
 }
- 
+
+- (RACSignal *)connectPeripheral:(CBPeripheral *)peripheral options:(NSDictionary *)options
+{
+	return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+		RACSerialDisposable *disposable = [[RACSerialDisposable alloc] init];
+		[self.CBScheduler schedule:^{
+			[self.manager connectPeripheral:peripheral options:options];
+			
+			RACDisposable *connectedDisposable = [[[[self
+				rac_signalForSelector:@selector(centralManager:didConnectPeripheral:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+				reduceEach:^(CBCentralManager *manager, CBPeripheral *connectedPeripheral) {
+					return connectedPeripheral;
+				}]
+				filter:^BOOL (CBPeripheral *connectedPeripheral) {
+					return [connectedPeripheral isEqual:peripheral];
+				}]
+				subscribeNext:^(CBPeripheral *connectedPeripheral) {
+					[subscriber sendNext:connectedPeripheral];
+					[subscriber sendCompleted];
+				}];
+			RACDisposable *failedDisposable = [[[self
+				rac_signalForSelector:@selector(centralManager:didFailToConnectPeripheral:error:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+				filter:^BOOL(RACTuple *args) {
+					return [args.second isEqual:peripheral];
+				}]
+				subscribeNext:^(RACTuple *args) {
+					[subscriber sendError:args.third];
+				}];
+			disposable.disposable = [RACCompoundDisposable compoundDisposableWithDisposables:@[ connectedDisposable, failedDisposable ]];
+		}];
+		return [RACDisposable disposableWithBlock:^{
+			if (disposable.disposable) {
+				[disposable dispose];
+				[self.CBScheduler schedule:^{
+					[self.manager cancelPeripheralConnection:peripheral];
+				}];
+			}
+		}];
+	}]
+	setNameWithFormat:@"RBTCentralManager -connectToPeripheral: %@ options: %@", peripheral, options];
+}
+
 #pragma mark - CBCentralManagerDelegate
 
 // Empty implementation because it's a required method.
