@@ -29,7 +29,7 @@
  *
  *  @return A signal that sends the current state of the receiver and the new state any time it changes.
  */
-- (RACSignal *)rbt_stateSignal;
+- (RACSignal *)stateSignal;
 
 /**
  *  Scans for peripherals that are advertising services.

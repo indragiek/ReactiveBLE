@@ -41,7 +41,7 @@
 
 #pragma mark - State
 
-- (RACSignal *)rbt_stateSignal
+- (RACSignal *)stateSignal
 {
 	@weakify(self);
 	return [[[[[RACSignal defer:^RACSignal *{
