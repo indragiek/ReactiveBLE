@@ -77,4 +77,13 @@
  */
 - (RACSignal *)retrievePeripheralsWithIdentifiers:(NSArray *)identifiers;
 
+/**
+ *  Retrieves a list of connected peripherals that contain any of the specified services.
+ *
+ *  @param services A list of service UUIDs (represented by `CBUUID` objects).
+ *
+ *  @return A signal that sends an array of `CBPeripheral` objects containing one or more of the services.
+ */
+- (RACSignal *)retrieveConnectedPeripheralsWithServices:(NSArray *)services;
+
 @end

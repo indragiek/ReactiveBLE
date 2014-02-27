@@ -175,6 +175,25 @@
 	setNameWithFormat:@"RBTCentralManager -retrievePeripheralsWithIdentifiers: %@", identifiers];
 }
 
+- (RACSignal *)retrieveConnectedPeripheralsWithServices:(NSArray *)services
+{
+	return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+		RACSerialDisposable *disposable = [[RACSerialDisposable alloc] init];
+		[self.CBScheduler schedule:^{
+			[self.manager retrieveConnectedPeripheralsWithServices:services];
+			
+			disposable.disposable = [[[[self
+				rac_signalForSelector:@selector(centralManager:didRetrieveConnectedPeripherals:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+				take:1]
+				reduceEach:^(CBCentralManager *manager, NSArray *peripherals) {
+					return peripherals;
+				}]
+				subscribe:subscriber];
+		}];
+	}]
+	setNameWithFormat:@"RBTCentralManager -retrieveConnectedPeripheralsWithServices: %@", services];
+}
+
 #pragma mark - CBCentralManagerDelegate
 
 // Empty implementation because it's a required method.
