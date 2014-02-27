@@ -117,7 +117,7 @@
 			disposable.disposable = [RACCompoundDisposable compoundDisposableWithDisposables:@[ connectedDisposable, failedDisposable ]];
 		}];
 		return [RACDisposable disposableWithBlock:^{
-			if (disposable.disposable) {
+			if (disposable.disposable != nil) {
 				[disposable dispose];
 				[self.CBScheduler schedule:^{
 					[self.manager cancelPeripheralConnection:peripheral];
