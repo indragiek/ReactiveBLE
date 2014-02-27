@@ -67,4 +67,14 @@
  */
 - (RACSignal *)disconnectPeripheral:(CBPeripheral *)peripheral;
 
+/**
+ *  Retrieves a list of known peripherals by their identifiers.
+ *
+ *  @param identifiers A list of peripheral identifiers (represented by NSUUID objects) from which 
+ *  CBPeripheral objects can be retrieved.
+ *
+ *  @return A signal that sends an array of `CBPeripheral` objects matching the identifiers.
+ */
+- (RACSignal *)retrievePeripheralsWithIdentifiers:(NSArray *)identifiers;
+
 @end
