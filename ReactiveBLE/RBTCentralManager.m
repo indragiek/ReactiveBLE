@@ -44,19 +44,20 @@
 - (RACSignal *)stateSignal
 {
 	@weakify(self);
-	return [[[[[RACSignal defer:^RACSignal *{
-		@strongify(self);
-		return [RACSignal return:self.manager];
-	}]
-	concat:[[self rac_signalForSelector:@selector(centralManagerDidUpdateState:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+	return [[[[[RACSignal
+		defer:^{
+			@strongify(self);
+			return [RACSignal return:self.manager];
+		}]
+		concat:[[self rac_signalForSelector:@selector(centralManagerDidUpdateState:) fromProtocol:@protocol(CBCentralManagerDelegate)]
 		reduceEach:^(CBCentralManager *manager) {
 			return manager;
 		}]]
-	map:^(CBCentralManager *manager) {
-		return @(manager.state);
-	}]
-	takeUntil:self.rac_willDeallocSignal]
-	setNameWithFormat:@"RBTCentralManager -stateSignal"];
+		map:^(CBCentralManager *manager) {
+			return @(manager.state);
+		}]
+		takeUntil:self.rac_willDeallocSignal]
+		setNameWithFormat:@"RBTCentralManager -stateSignal"];
 }
 
 #pragma mark - CBCentralManagerDelegate
