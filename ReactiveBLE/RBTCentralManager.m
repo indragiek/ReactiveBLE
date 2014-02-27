@@ -79,7 +79,6 @@
 			}];
 		}];
 	}]
-			   }]]
 	takeUntil:[[self
 		rac_signalForSelector:@selector(scanForPeripheralsWithServices:options:)]
 		filter:^BOOL(RACTuple *args) {
