@@ -59,6 +59,16 @@
 	setNameWithFormat:@"RBTCentralManager -stateSignal"];
 }
 
+- (RACSignal *)willRestoreStateSignal
+{
+	return [[[self
+		rac_signalForSelector:@selector(centralManager:willRestoreState:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+		reduceEach:^(CBCentralManager *manager, NSDictionary *dict) {
+			return dict;
+		}]
+		setNameWithFormat:@"RBTCentralManager -willRestoreStateSignal"];
+}
+
 - (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
 {
 	return [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {

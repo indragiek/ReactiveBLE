@@ -33,6 +33,16 @@
 - (RACSignal *)stateSignal;
 
 /**
+ *  Observes the receiver for a state restoration event, which occurs when your app is launched into the 
+ *  background to complete a Bluetooth related task.
+ *
+ *  @return A signal that sends a dictionary of information preserved by the central manager at the time
+ *  the app was terminated. See “Central Manager State Restoration Options" in the `CBCentralManager`
+ *  documentation for a list of possible keys.
+ */
+- (RACSignal *)willRestoreStateSignal;
+
+/**
  *  Scans for peripherals that are advertising services.
  *
  *  A signal returned by this method will complete if this method is called again with different
