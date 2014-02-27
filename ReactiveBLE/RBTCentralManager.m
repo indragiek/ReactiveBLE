@@ -62,14 +62,16 @@
 - (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
 {
 	return [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+		RACSerialDisposable *disposable = [[RACSerialDisposable alloc] init];
 		[self.CBScheduler schedule:^{
 			[self.manager scanForPeripheralsWithServices:services options:options];
-		}];
-		RACDisposable *disposable = [[[self rac_signalForSelector:@selector(centralManager:didDiscoverPeripheral:advertisementData:RSSI:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+			disposable.disposable = [[[self
+				rac_signalForSelector:@selector(centralManager:didDiscoverPeripheral:advertisementData:RSSI:) fromProtocol:@protocol(CBCentralManagerDelegate)]
 				reduceEach:^(CBCentralManager *manager, CBPeripheral *peripheral, NSDictionary *data, NSNumber *RSSI) {
 					return RACTuplePack(peripheral, data, RSSI);
 				}]
 				subscribe:subscriber];
+		}];
 		return [RACDisposable disposableWithBlock:^{
 			[disposable dispose];
 			[self.CBScheduler schedule:^{
@@ -77,13 +79,15 @@
 			}];
 		}];
 	}]
-	takeUntil:[[self rac_signalForSelector:@selector(scanForPeripheralsWithServices:options:)]
-			   filter:^BOOL(RACTuple *args) {
-				   return ![args isEqual:RACTuplePack(services, options)];
 			   }]]
+	takeUntil:[[self
+		rac_signalForSelector:@selector(scanForPeripheralsWithServices:options:)]
+		filter:^BOOL(RACTuple *args) {
+			return ![args isEqual:RACTuplePack(services, options)];
+		}]]
 	setNameWithFormat:@"RBTCentralManager rbt_scanForPeripheralsWithServices: %@ options: %@", services, options];
 }
-
+ 
 #pragma mark - CBCentralManagerDelegate
 
 // Empty implementation because it's a required method.
