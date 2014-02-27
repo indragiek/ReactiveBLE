@@ -15,8 +15,8 @@
 #endif
 
 @interface RBTCentralManager () <CBCentralManagerDelegate>
-@property (nonatomic, readonly) dispatch_queue_t delegateQueue;
-@property (nonatomic, strong, readonly) RACScheduler *delegateScheduler;
+@property (nonatomic, readonly) dispatch_queue_t CBQueue;
+@property (nonatomic, strong, readonly) RACScheduler *CBScheduler;
 @property (nonatomic, strong, readonly) CBCentralManager *manager;
 @end
 
@@ -27,9 +27,9 @@
 - (id)initWithOptions:(NSDictionary *)options
 {
 	if ((self = [super init])) {
-		_delegateQueue = dispatch_queue_create("com.indragie.RBTCentralManager.DelegateQueue", DISPATCH_QUEUE_SERIAL);
-		_delegateScheduler = [[RACTargetQueueScheduler alloc] initWithName:@"com.indragie.RBTCentralManager.DelegateQueueScheduler" targetQueue:_delegateQueue];
-		_manager = [[CBCentralManager alloc] initWithDelegate:self queue:_delegateQueue options:options];
+		_CBQueue = dispatch_queue_create("com.indragie.RBTCentralManager.DelegateQueue", DISPATCH_QUEUE_SERIAL);
+		_CBScheduler = [[RACTargetQueueScheduler alloc] initWithName:@"com.indragie.RBTCentralManager.DelegateQueueScheduler" targetQueue:_CBQueue];
+		_manager = [[CBCentralManager alloc] initWithDelegate:self queue:_CBQueue options:options];
 	}
 	return self;
 }
@@ -62,7 +62,9 @@
 - (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
 {
 	return [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-		[self.manager scanForPeripheralsWithServices:services options:options];
+		[self.CBScheduler schedule:^{
+			[self.manager scanForPeripheralsWithServices:services options:options];
+		}];
 		RACDisposable *disposable = [[[self rac_signalForSelector:@selector(centralManager:didDiscoverPeripheral:advertisementData:RSSI:) fromProtocol:@protocol(CBCentralManagerDelegate)]
 				reduceEach:^(CBCentralManager *manager, CBPeripheral *peripheral, NSDictionary *data, NSNumber *RSSI) {
 					return RACTuplePack(peripheral, data, RSSI);
@@ -70,7 +72,9 @@
 				subscribe:subscriber];
 		return [RACDisposable disposableWithBlock:^{
 			[disposable dispose];
-			[self.manager stopScan];
+			[self.CBScheduler schedule:^{
+				[self.manager stopScan];
+			}];
 		}];
 	}]
 	takeUntil:[[self rac_signalForSelector:@selector(scanForPeripheralsWithServices:options:)]
