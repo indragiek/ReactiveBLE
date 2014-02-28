@@ -8,11 +8,18 @@
 
 #import "RBTAppDelegate.h"
 
+@interface RBTAppDelegate ()
+@property (nonatomic, strong) RBTCentralManager *manager;
+@end
+
 @implementation RBTAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	// Insert code here to initialize your application
+	self.manager = [[RBTCentralManager alloc] init];
+	[self.manager.rbt_stateSignal subscribeNext:^(id x) {
+		NSLog(@"%@", x);
+	}];
 }
 
 @end

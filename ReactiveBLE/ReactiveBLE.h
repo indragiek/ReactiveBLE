@@ -6,8 +6,4 @@
 //  Copyright (c) 2014 Indragie Karunaratne. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@interface ReactiveBLE : NSObject
-
-@end
+#import "RBTCentralManager.h"

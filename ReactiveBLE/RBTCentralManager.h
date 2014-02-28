@@ -1,19 +1,35 @@
 //
-//  CBCentralManager+RBTAdditions.h
+//  RBTCentralManager.h
 //  ReactiveBLE
 //
-//  Created by Indragie Karunaratne on 2/24/2014.
+//  Created by Indragie Karunaratne on 2014-02-26.
 //  Copyright (c) 2014 Indragie Karunaratne. All rights reserved.
 //
 
-@interface CBCentralManager (RBTAdditions)
+#import <Foundation/Foundation.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
+/**
+ *  ReactiveCocoa interface to `CBCentralManager`
+ */
+@interface RBTCentralManager : NSObject
+
+/**
+ *  Creates a new instance of `RBTCentralManager`
+ *
+ *  @param options Optional dictionary of options as described in "Central Manager Initialization Options"
+ *  in the `CBCentralManager` documentation.
+ *
+ *  @return A new instance of `RBTCentralManager`
+ */
+- (id)initWithOptions:(NSDictionary *)options;
 
 /**
  *  Observes the state of the receiver.
  *
  *  @return A signal that sends the current state of the receiver and the new state any time it changes.
  */
-- (RACSignal *)rbt_stateSignal;
+- (RACSignal *)stateSignal;
 
 /**
  *  Scans for peripherals that are advertising services.

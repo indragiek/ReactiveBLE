@@ -6,6 +6,5 @@
 
 #ifdef __OBJC__
 	#import <Cocoa/Cocoa.h>
-	#import <IOBluetooth/IOBluetooth.h>
-	#import <ReactiveCocoa/ReactiveCocoa.h>
+	#import "EXTScope.h"
 #endif
