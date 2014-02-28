@@ -60,6 +60,27 @@
 		setNameWithFormat:@"RBTCentralManager -stateSignal"];
 }
 
+- (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
+{
+    @weakify(self);
+    return [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        [self.manager scanForPeripheralsWithServices:services options:options];
+
+        [[[self rac_signalForSelector:@selector(centralManager:didDiscoverPeripheral:advertisementData:RSSI:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+          reduceEach:^(CBPeripheralManager *manager, CBPeripheral *peripheral, NSDictionary *advertisementData, NSNumber *RSSI){
+             return RACTuplePack(peripheral, advertisementData, RSSI);
+         }]
+         subscribe:subscriber];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [self.manager stopScan];
+        }];
+    }]
+    takeUntil:self.rac_willDeallocSignal]
+    setNameWithFormat:@"RBTCentralManager -scanForPeripheralsWithServices: %@ options: %@", services, options];;
+}
+
 #pragma mark - CBCentralManagerDelegate
 
 // Empty implementation because it's a required method.

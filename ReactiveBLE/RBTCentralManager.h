@@ -40,6 +40,6 @@
  *  @return A signal that sends a tuple containing a discovered `CBPeripheral`, an `NSDictionary`
  *  containing advertisement data, and an `NSNumber` representing the RSSI.
  */
-- (RACSignal *)rbt_scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options;
+- (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options;
 
 @end
