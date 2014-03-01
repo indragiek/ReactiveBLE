@@ -61,17 +61,14 @@
 
 - (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
 {
-	return [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-		RACSerialDisposable *disposable = [[RACSerialDisposable alloc] init];
-		[self.CBScheduler schedule:^{
-			[self.manager scanForPeripheralsWithServices:services options:options];
-			disposable.disposable = [[[self
-				rac_signalForSelector:@selector(centralManager:didDiscoverPeripheral:advertisementData:RSSI:) fromProtocol:@protocol(CBCentralManagerDelegate)]
-				reduceEach:^(CBCentralManager *manager, CBPeripheral *peripheral, NSDictionary *data, NSNumber *RSSI) {
+	return [[[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+		[self.manager scanForPeripheralsWithServices:services options:options];
+		RACDisposable *disposable = [[[self
+			rac_signalForSelector:@selector(centralManager:didDiscoverPeripheral:advertisementData:RSSI:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+			reduceEach:^(CBCentralManager *manager, CBPeripheral *peripheral, NSDictionary *data, NSNumber *RSSI) {
 					return RACTuplePack(peripheral, data, RSSI);
-				}]
-				subscribe:subscriber];
-		}];
+			}]
+			subscribe:subscriber];
 		return [RACDisposable disposableWithBlock:^{
 			[disposable dispose];
 			[self.CBScheduler schedule:^{
@@ -79,6 +76,7 @@
 			}];
 		}];
 	}]
+	subscribeOn:self.CBScheduler]
 	takeUntil:[[self
 		rac_signalForSelector:@selector(scanForPeripheralsWithServices:options:)]
 		filter:^BOOL(RACTuple *args) {
