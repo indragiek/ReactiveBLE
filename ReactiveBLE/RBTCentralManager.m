@@ -15,8 +15,7 @@
 #endif
 
 @interface RBTCentralManager () <CBCentralManagerDelegate>
-@property (nonatomic, readonly) dispatch_queue_t delegateQueue;
-@property (nonatomic, strong, readonly) RACScheduler *delegateScheduler;
+@property (nonatomic, strong, readonly) RACScheduler *CBScheduler;
 @property (nonatomic, strong, readonly) CBCentralManager *manager;
 @end
 
@@ -27,9 +26,9 @@
 - (id)initWithOptions:(NSDictionary *)options
 {
 	if ((self = [super init])) {
-		_delegateQueue = dispatch_queue_create("com.indragie.RBTCentralManager.DelegateQueue", DISPATCH_QUEUE_SERIAL);
-		_delegateScheduler = [[RACTargetQueueScheduler alloc] initWithName:@"com.indragie.RBTCentralManager.DelegateQueueScheduler" targetQueue:_delegateQueue];
-		_manager = [[CBCentralManager alloc] initWithDelegate:self queue:_delegateQueue options:options];
+		dispatch_queue_t queue = dispatch_queue_create("com.indragie.RBTCentralManager.CoreBluetoothQueue", DISPATCH_QUEUE_SERIAL);
+		_CBScheduler = [[RACTargetQueueScheduler alloc] initWithName:@"com.indragie.RBTCentralManager.CoreBluetoothScheduler" targetQueue:queue];
+		_manager = [[CBCentralManager alloc] initWithDelegate:self queue:queue options:options];
 	}
 	return self;
 }
@@ -37,6 +36,13 @@
 - (id)init
 {
 	return [self initWithOptions:nil];
+}
+
+#pragma mark - RAC
+
+- (NSString *)description
+{
+	return [NSString stringWithFormat:@"<%@: %p>", self.class, self];
 }
 
 #pragma mark - State
@@ -57,9 +63,40 @@
 			return @(manager.state);
 		}]
 		takeUntil:self.rac_willDeallocSignal]
-		setNameWithFormat:@"RBTCentralManager -stateSignal"];
+		setNameWithFormat:@"%@ -stateSignal", self];
 }
 
+- (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
+{
+	return [[[[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
+		RACDisposable *disposable = [[[self
+			rac_signalForSelector:@selector(centralManager:didDiscoverPeripheral:advertisementData:RSSI:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+			reduceEach:^(CBCentralManager *manager, CBPeripheral *peripheral, NSDictionary *data, NSNumber *RSSI) {
+				return RACTuplePack(peripheral, data, RSSI);
+			}]
+			subscribe:subscriber];
+		
+		[self.manager scanForPeripheralsWithServices:services options:options];
+		
+		return [RACDisposable disposableWithBlock:^{
+			[disposable dispose];
+			[self.CBScheduler schedule:^{
+				[self.manager stopScan];
+			}];
+		}];
+	}]
+	subscribeOn:self.CBScheduler]
+	// Previous signals returned by this method should complete when the method is called again
+	// with different scan parameters, since the scanning state is centralized to a single instance
+	// of `CBCentralManager`.
+	takeUntil:[[self
+		rac_signalForSelector:_cmd]
+		filter:^BOOL(RACTuple *args) {
+			return ![args isEqual:RACTuplePack(services, options)];
+		}]]
+	setNameWithFormat:@"%@ -scanForPeripheralsWithServices: %@ options: %@", self, services, options];
+}
+ 
 #pragma mark - CBCentralManagerDelegate
 
 // Empty implementation because it's a required method.
