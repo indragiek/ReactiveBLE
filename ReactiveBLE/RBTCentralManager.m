@@ -62,7 +62,7 @@
 		return @(manager.state);
 	}]
 	takeUntil:self.rac_willDeallocSignal]
-	setNameWithFormat:@"[%@] -stateSignal", self];
+	setNameWithFormat:@"%@ -stateSignal", self];
 }
 
 - (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
@@ -93,7 +93,7 @@
 		filter:^BOOL(RACTuple *args) {
 			return ![args isEqual:RACTuplePack(services, options)];
 		}]]
-	setNameWithFormat:@"[%@] -scanForPeripheralsWithServices: %@ options: %@", self, services, options];
+	setNameWithFormat:@"%@ -scanForPeripheralsWithServices: %@ options: %@", self, services, options];
 }
  
 #pragma mark - CBCentralManagerDelegate
