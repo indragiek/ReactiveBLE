@@ -82,7 +82,7 @@
 		filter:^BOOL(RACTuple *args) {
 			return ![args isEqual:RACTuplePack(services, options)];
 		}]]
-	setNameWithFormat:@"RBTCentralManager rbt_scanForPeripheralsWithServices: %@ options: %@", services, options];
+	setNameWithFormat:@"RBTCentralManager scanForPeripheralsWithServices: %@ options: %@", services, options];
 }
  
 #pragma mark - CBCentralManagerDelegate
