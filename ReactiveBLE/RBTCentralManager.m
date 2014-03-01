@@ -65,7 +65,7 @@
 		RACDisposable *disposable = [[[self
 			rac_signalForSelector:@selector(centralManager:didDiscoverPeripheral:advertisementData:RSSI:) fromProtocol:@protocol(CBCentralManagerDelegate)]
 			reduceEach:^(CBCentralManager *manager, CBPeripheral *peripheral, NSDictionary *data, NSNumber *RSSI) {
-					return RACTuplePack(peripheral, data, RSSI);
+				return RACTuplePack(peripheral, data, RSSI);
 			}]
 			subscribe:subscriber];
 		
