@@ -38,6 +38,13 @@
 	return [self initWithOptions:nil];
 }
 
+#pragma mark - RAC
+
+- (NSString *)description
+{
+	return [NSString stringWithFormat:@"<%@: %p>", NSStringFromClass(self.class), self];
+}
+
 #pragma mark - State
 
 - (RACSignal *)stateSignal
@@ -55,7 +62,7 @@
 		return @(manager.state);
 	}]
 	takeUntil:self.rac_willDeallocSignal]
-	setNameWithFormat:@"RBTCentralManager -stateSignal"];
+	setNameWithFormat:@"[%@] -stateSignal", self];
 }
 
 - (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
@@ -86,7 +93,7 @@
 		filter:^BOOL(RACTuple *args) {
 			return ![args isEqual:RACTuplePack(services, options)];
 		}]]
-	setNameWithFormat:@"RBTCentralManager scanForPeripheralsWithServices: %@ options: %@", services, options];
+	setNameWithFormat:@"[%@] scanForPeripheralsWithServices: %@ options: %@", self, services, options];
 }
  
 #pragma mark - CBCentralManagerDelegate
