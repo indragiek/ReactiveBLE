@@ -79,6 +79,9 @@
 		}];
 	}]
 	subscribeOn:self.CBScheduler]
+	// Previous signals returned by this method should complete when the method is called again
+	// with different scan parameters, since the scanning state is centralized to a single instance
+	// of `CBCentralManager`.
 	takeUntil:[[self
 		rac_signalForSelector:@selector(scanForPeripheralsWithServices:options:)]
 		filter:^BOOL(RACTuple *args) {
