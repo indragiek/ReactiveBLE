@@ -42,7 +42,7 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"<%@: %p>", NSStringFromClass(self.class), self];
+	return [NSString stringWithFormat:@"<%@: %p>", self.class, self];
 }
 
 #pragma mark - State
