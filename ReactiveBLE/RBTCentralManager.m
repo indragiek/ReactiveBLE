@@ -15,7 +15,6 @@
 #endif
 
 @interface RBTCentralManager () <CBCentralManagerDelegate>
-@property (nonatomic, readonly) dispatch_queue_t CBQueue;
 @property (nonatomic, strong, readonly) RACScheduler *CBScheduler;
 @property (nonatomic, strong, readonly) CBCentralManager *manager;
 @end
@@ -27,9 +26,9 @@
 - (id)initWithOptions:(NSDictionary *)options
 {
 	if ((self = [super init])) {
-		_CBQueue = dispatch_queue_create("com.indragie.RBTCentralManager.CoreBluetoothQueue", DISPATCH_QUEUE_SERIAL);
-		_CBScheduler = [[RACTargetQueueScheduler alloc] initWithName:@"com.indragie.RBTCentralManager.CoreBluetoothScheduler" targetQueue:_CBQueue];
-		_manager = [[CBCentralManager alloc] initWithDelegate:self queue:_CBQueue options:options];
+		dispatch_queue_t queue = dispatch_queue_create("com.indragie.RBTCentralManager.CoreBluetoothQueue", DISPATCH_QUEUE_SERIAL);
+		_CBScheduler = [[RACTargetQueueScheduler alloc] initWithName:@"com.indragie.RBTCentralManager.CoreBluetoothScheduler" targetQueue:queue];
+		_manager = [[CBCentralManager alloc] initWithDelegate:self queue:queue options:options];
 	}
 	return self;
 }
