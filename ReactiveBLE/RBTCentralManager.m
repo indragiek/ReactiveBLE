@@ -112,12 +112,11 @@
 				[subscriber sendError:args.third];
 			}];
 		
-		RACDisposable *compoundDisposable = [RACCompoundDisposable compoundDisposableWithDisposables:@[ connectedDisposable, failedDisposable ]];
-		
 		[self.manager connectPeripheral:peripheral options:options];
 		
 		return [RACDisposable disposableWithBlock:^{
-			[compoundDisposable dispose];
+			[connectedDisposable dispose];
+			[failedDisposable dispose];
 			[self.CBScheduler schedule:^{
 				[self.manager cancelPeripheralConnection:peripheral];
 			}];
