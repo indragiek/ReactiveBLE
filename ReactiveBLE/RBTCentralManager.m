@@ -129,7 +129,7 @@
 
 - (RACSignal *)disconnectPeripheral:(CBPeripheral *)peripheral
 {
-	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
+	return [[[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		RACDisposable *disposable = [[[self
 			rac_signalForSelector:@selector(centralManager:didDisconnectPeripheral:error:) fromProtocol:@protocol(CBCentralManagerDelegate)]
 			filter:^BOOL(RACTuple *args) {
@@ -147,6 +147,7 @@
 		[self.manager cancelPeripheralConnection:peripheral];
 		return disposable;
 	}]
+	subscribeOn:self.CBScheduler]
 	setNameWithFormat:@"%@ -disconnectPeripheral: %@", self, peripheral];
 }
 
