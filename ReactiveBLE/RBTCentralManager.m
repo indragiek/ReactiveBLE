@@ -89,7 +89,7 @@
 	// with different scan parameters, since the scanning state is centralized to a single instance
 	// of `CBCentralManager`.
 	takeUntil:[[self
-		rac_signalForSelector:@selector(scanForPeripheralsWithServices:options:)]
+		rac_signalForSelector:_cmd]
 		filter:^BOOL(RACTuple *args) {
 			return ![args isEqual:RACTuplePack(services, options)];
 		}]]
