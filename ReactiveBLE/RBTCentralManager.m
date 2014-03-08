@@ -126,30 +126,6 @@
 	setNameWithFormat:@"%@ -connectToPeripheral: %@ options: %@", self, peripheral, options];
 }
 
-- (RACSignal *)disconnectPeripheral:(CBPeripheral *)peripheral
-{
-	return [[[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
-		RACDisposable *disposable = [[[self
-			rac_signalForSelector:@selector(centralManager:didDisconnectPeripheral:error:) fromProtocol:@protocol(CBCentralManagerDelegate)]
-			filter:^BOOL(RACTuple *args) {
-				return [args.second isEqual:peripheral];
-			}]
-			subscribeNext:^(RACTuple *args) {
-				NSError *error = args.third;
-				if (error != nil) {
-					[subscriber sendError:error];
-				} else {
-					[subscriber sendCompleted];
-				}
-			}];
-		
-		[self.manager cancelPeripheralConnection:peripheral];
-		return disposable;
-	}]
-	subscribeOn:self.CBScheduler]
-	setNameWithFormat:@"%@ -disconnectPeripheral: %@", self, peripheral];
-}
-
 #pragma mark - CBCentralManagerDelegate
 
 // Empty implementation because it's a required method.

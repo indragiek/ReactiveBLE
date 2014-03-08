@@ -49,6 +49,9 @@
 /**
  *  Connects to a Bluetooth peripheral.
  *
+ *  Disposal of a subscription to this signal will result in the peripheral automatically being
+ *  disconnected.
+ *
  *  @param peripheral The peripheral to connect to.
  *  @param options    Options to customize the behaviour of the connection. See "Peripheral Connection
  *  Options" in the `CBCentralManager` documentation.
@@ -56,15 +59,5 @@
  *  @return A signal that completes on successful connection or errors if the connection fails.
  */
 - (RACSignal *)connectPeripheral:(CBPeripheral *)peripheral options:(NSDictionary *)options;
-
-/**
- *  Disconnects an already connected or connecting Bluetooth peripheral.
- *
- *  @param peripheral The peripheral to disconnect.
- *
- *  @return A signal that completes when the peripheral is disconnected, or errors if there was
- *  an error during disconnection.
- */
-- (RACSignal *)disconnectPeripheral:(CBPeripheral *)peripheral;
 
 @end
