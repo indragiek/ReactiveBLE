@@ -90,7 +90,7 @@
 - (RACSignal *)connectPeripheral:(CBPeripheral *)peripheral options:(NSDictionary *)options
 {
 	return [[[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
-		RACDisposable *connectedDisposable = [[[[self
+		RACDisposable *connectedDisposable = [[[[[self
 			rac_signalForSelector:@selector(centralManager:didConnectPeripheral:) fromProtocol:@protocol(CBCentralManagerDelegate)]
 			reduceEach:^(CBCentralManager *manager, CBPeripheral *connectedPeripheral) {
 				return connectedPeripheral;
@@ -98,10 +98,8 @@
 			filter:^BOOL (CBPeripheral *connectedPeripheral) {
 				return [connectedPeripheral isEqual:peripheral];
 			}]
-			subscribeNext:^(CBPeripheral *connectedPeripheral) {
-				[subscriber sendNext:connectedPeripheral];
-				[subscriber sendCompleted];
-			}];
+			take:1]
+			subscribe:subscriber];
 		
 		RACDisposable *failedDisposable = [[[self
 			rac_signalForSelector:@selector(centralManager:didFailToConnectPeripheral:error:) fromProtocol:@protocol(CBCentralManagerDelegate)]
