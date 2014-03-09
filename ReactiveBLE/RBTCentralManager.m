@@ -68,6 +68,7 @@
 
 - (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
 {
+	NSDictionary *copiedOptions = [options copy];
 	return [[[[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		RACDisposable *disposable = [[[self
 			rac_signalForSelector:@selector(centralManager:didDiscoverPeripheral:advertisementData:RSSI:) fromProtocol:@protocol(CBCentralManagerDelegate)]
@@ -76,7 +77,7 @@
 			}]
 			subscribe:subscriber];
 		
-		[self.manager scanForPeripheralsWithServices:services options:options];
+		[self.manager scanForPeripheralsWithServices:services options:copiedOptions];
 		
 		return [RACDisposable disposableWithBlock:^{
 			[disposable dispose];
@@ -96,7 +97,45 @@
 		}]]
 	setNameWithFormat:@"%@ -scanForPeripheralsWithServices: %@ options: %@", self, services, options];
 }
- 
+
+- (RACSignal *)connectPeripheral:(CBPeripheral *)peripheral options:(NSDictionary *)options
+{
+	NSDictionary *copiedOptions = [options copy];
+	return [[[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
+		RACDisposable *connectedDisposable = [[[[[self
+			rac_signalForSelector:@selector(centralManager:didConnectPeripheral:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+			reduceEach:^(CBCentralManager *manager, CBPeripheral *connectedPeripheral) {
+				return connectedPeripheral;
+			}]
+			filter:^BOOL (CBPeripheral *connectedPeripheral) {
+				return [connectedPeripheral isEqual:peripheral];
+			}]
+			take:1]
+			subscribe:subscriber];
+		
+		RACDisposable *failedDisposable = [[[self
+			rac_signalForSelector:@selector(centralManager:didFailToConnectPeripheral:error:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+			filter:^BOOL(RACTuple *args) {
+				return [args.second isEqual:peripheral];
+			}]
+			subscribeNext:^(RACTuple *args) {
+				[subscriber sendError:args.third];
+			}];
+		
+		[self.manager connectPeripheral:peripheral options:copiedOptions];
+		
+		return [RACDisposable disposableWithBlock:^{
+			[connectedDisposable dispose];
+			[failedDisposable dispose];
+			[self.CBScheduler schedule:^{
+				[self.manager cancelPeripheralConnection:peripheral];
+			}];
+		}];
+	}]
+	subscribeOn:self.CBScheduler]
+	setNameWithFormat:@"%@ -connectToPeripheral: %@ options: %@", self, peripheral, options];
+}
+
 #pragma mark - CBCentralManagerDelegate
 
 // Empty implementation because it's a required method.
