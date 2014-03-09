@@ -61,10 +61,11 @@
 
 - (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
 {
+	NSDictionary *copiedOptions = [options copy];
 	return [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
 		RACSerialDisposable *disposable = [[RACSerialDisposable alloc] init];
 		[self.CBScheduler schedule:^{
-			[self.manager scanForPeripheralsWithServices:services options:options];
+			[self.manager scanForPeripheralsWithServices:services options:copiedOptions];
 			disposable.disposable = [[[self
 				rac_signalForSelector:@selector(centralManager:didDiscoverPeripheral:advertisementData:RSSI:) fromProtocol:@protocol(CBCentralManagerDelegate)]
 				reduceEach:^(CBCentralManager *manager, CBPeripheral *peripheral, NSDictionary *data, NSNumber *RSSI) {
@@ -89,6 +90,7 @@
 
 - (RACSignal *)connectPeripheral:(CBPeripheral *)peripheral options:(NSDictionary *)options
 {
+	NSDictionary *copiedOptions = [options copy];
 	return [[[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		RACDisposable *connectedDisposable = [[[[[self
 			rac_signalForSelector:@selector(centralManager:didConnectPeripheral:) fromProtocol:@protocol(CBCentralManagerDelegate)]
@@ -110,7 +112,7 @@
 				[subscriber sendError:args.third];
 			}];
 		
-		[self.manager connectPeripheral:peripheral options:options];
+		[self.manager connectPeripheral:peripheral options:copiedOptions];
 		
 		return [RACDisposable disposableWithBlock:^{
 			[connectedDisposable dispose];
