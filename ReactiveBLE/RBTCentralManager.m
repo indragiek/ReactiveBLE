@@ -152,15 +152,23 @@
 	setNameWithFormat:@"RBTCentralManager -disconnectPeripheral: %@", peripheral];
 }
 
+// Used by -retrievePeripheralsWithIdentifiers: and -retrieveConnectedPeripheralsWithIdentifiers:
+// since the method signatures are identical.
+- (RACSignal *)peripheralsSignalForSelector:(SEL)selector
+{
+	return [[[self
+		rac_signalForSelector:selector fromProtocol:@protocol(CBCentralManagerDelegate)]
+		take:1]
+		reduceEach:^(CBCentralManager *manager, NSArray *peripherals) {
+			return peripherals;
+		}];
+}
+
 - (RACSignal *)retrievePeripheralsWithIdentifiers:(NSArray *)identifiers
 {
 	return [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-		RACDisposable *disposable = [[[[self
-			rac_signalForSelector:@selector(centralManager:didRetrievePeripherals:) fromProtocol:@protocol(CBCentralManagerDelegate)]
-			take:1]
-			reduceEach:^(CBCentralManager *manager, NSArray *peripherals) {
-				return peripherals;
-			}]
+		RACDisposable *disposable = [[self
+			peripheralsSignalForSelector:@selector(centralManager:didRetrievePeripherals:)]
 			subscribe:subscriber];
 		
 		[self.manager retrievePeripheralsWithIdentifiers:identifiers];
@@ -173,12 +181,8 @@
 - (RACSignal *)retrieveConnectedPeripheralsWithServices:(NSArray *)services
 {
 	return [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-		RACDisposable *disposable = [[[[self
-			rac_signalForSelector:@selector(centralManager:didRetrieveConnectedPeripherals:) fromProtocol:@protocol(CBCentralManagerDelegate)]
-			take:1]
-			reduceEach:^(CBCentralManager *manager, NSArray *peripherals) {
-				return peripherals;
-			}]
+		RACDisposable *disposable = [[self
+			peripheralsSignalForSelector:@selector(centralManager:didRetrieveConnectedPeripherals:)]
 			subscribe:subscriber];
 		
 		[self.manager retrieveConnectedPeripheralsWithServices:services];
