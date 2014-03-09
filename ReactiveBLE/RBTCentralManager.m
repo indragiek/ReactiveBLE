@@ -154,41 +154,37 @@
 
 - (RACSignal *)retrievePeripheralsWithIdentifiers:(NSArray *)identifiers
 {
-	return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-		RACSerialDisposable *disposable = [[RACSerialDisposable alloc] init];
-		[self.CBScheduler schedule:^{
-			[self.manager retrievePeripheralsWithIdentifiers:identifiers];
-			
-			disposable.disposable = [[[[self
-				rac_signalForSelector:@selector(centralManager:didRetrievePeripherals:) fromProtocol:@protocol(CBCentralManagerDelegate)]
-				take:1]
-				reduceEach:^(CBCentralManager *manager, NSArray *peripherals) {
-					return peripherals;
-				}]
-				subscribe:subscriber];
-		}];
+	return [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+		RACDisposable *disposable = [[[[self
+			rac_signalForSelector:@selector(centralManager:didRetrievePeripherals:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+			take:1]
+			reduceEach:^(CBCentralManager *manager, NSArray *peripherals) {
+				return peripherals;
+			}]
+			subscribe:subscriber];
+		
+		[self.manager retrievePeripheralsWithIdentifiers:identifiers];
 		return disposable;
 	}]
+	subscribeOn:self.CBScheduler]
 	setNameWithFormat:@"RBTCentralManager -retrievePeripheralsWithIdentifiers: %@", identifiers];
 }
 
 - (RACSignal *)retrieveConnectedPeripheralsWithServices:(NSArray *)services
 {
-	return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-		RACSerialDisposable *disposable = [[RACSerialDisposable alloc] init];
-		[self.CBScheduler schedule:^{
-			[self.manager retrieveConnectedPeripheralsWithServices:services];
-			
-			disposable.disposable = [[[[self
-				rac_signalForSelector:@selector(centralManager:didRetrieveConnectedPeripherals:) fromProtocol:@protocol(CBCentralManagerDelegate)]
-				take:1]
-				reduceEach:^(CBCentralManager *manager, NSArray *peripherals) {
-					return peripherals;
-				}]
-				subscribe:subscriber];
-		}];
+	return [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+		RACDisposable *disposable = [[[[self
+			rac_signalForSelector:@selector(centralManager:didRetrieveConnectedPeripherals:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+			take:1]
+			reduceEach:^(CBCentralManager *manager, NSArray *peripherals) {
+				return peripherals;
+			}]
+			subscribe:subscriber];
+		
+		[self.manager retrieveConnectedPeripheralsWithServices:services];
 		return disposable;
 	}]
+	subscribeOn:self.CBScheduler]
 	setNameWithFormat:@"RBTCentralManager -retrieveConnectedPeripheralsWithServices: %@", services];
 }
 
