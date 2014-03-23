@@ -44,7 +44,7 @@
 - (RACSignal *)stateSignal
 {
 	@weakify(self);
-	return [[[[[RACSignal defer:^RACSignal *{
+	return [[[[[RACSignal defer:^{
 		@strongify(self);
 		return [RACSignal return:self.manager];
 	}]
@@ -61,7 +61,7 @@
 
 - (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
 {
-	return [[[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+	return [[[[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		[self.manager scanForPeripheralsWithServices:services options:options];
 		RACDisposable *disposable = [[[self
 			rac_signalForSelector:@selector(centralManager:didDiscoverPeripheral:advertisementData:RSSI:) fromProtocol:@protocol(CBCentralManagerDelegate)]
@@ -87,7 +87,7 @@
 
 - (RACSignal *)connectPeripheral:(CBPeripheral *)peripheral options:(NSDictionary *)options
 {
-	return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		RACSerialDisposable *disposable = [[RACSerialDisposable alloc] init];
 		[self.CBScheduler schedule:^{
 			[self.manager connectPeripheral:peripheral options:options];
@@ -128,7 +128,7 @@
 
 - (RACSignal *)disconnectPeripheral:(CBPeripheral *)peripheral
 {
-	return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+	return [[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
 		RACSerialDisposable *disposable = [[RACSerialDisposable alloc] init];
 		[self.CBScheduler schedule:^{
 			[self.manager cancelPeripheralConnection:peripheral];
