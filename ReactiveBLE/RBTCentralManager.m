@@ -152,7 +152,7 @@
 	setNameWithFormat:@"RBTCentralManager -disconnectPeripheral: %@", peripheral];
 }
 
-// Used by -retrievePeripheralsWithIdentifiers: and -retrieveConnectedPeripheralsWithIdentifiers:
+// Used by -retrievePeripheralsWithIdentifiers: and -retrieveConnectedPeripheralsWithServices:
 // since the method signatures are identical.
 - (RACSignal *)peripheralsSignalForSelector:(SEL)selector
 {
