@@ -62,13 +62,15 @@
 - (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
 {
 	return [[[[RACSignal createSignal:^(id<RACSubscriber> subscriber) {
-		[self.manager scanForPeripheralsWithServices:services options:options];
 		RACDisposable *disposable = [[[self
 			rac_signalForSelector:@selector(centralManager:didDiscoverPeripheral:advertisementData:RSSI:) fromProtocol:@protocol(CBCentralManagerDelegate)]
 			reduceEach:^(CBCentralManager *manager, CBPeripheral *peripheral, NSDictionary *data, NSNumber *RSSI) {
 					return RACTuplePack(peripheral, data, RSSI);
 			}]
 			subscribe:subscriber];
+		
+		[self.manager scanForPeripheralsWithServices:services options:options];
+		
 		return [RACDisposable disposableWithBlock:^{
 			[disposable dispose];
 			[self.CBScheduler schedule:^{
