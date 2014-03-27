@@ -60,4 +60,23 @@
  */
 - (RACSignal *)connectPeripheral:(CBPeripheral *)peripheral options:(NSDictionary *)options;
 
+/**
+ *  Retrieves a list of known peripherals by their identifiers.
+ *
+ *  @param identifiers A list of peripheral identifiers (represented by NSUUID objects) from which 
+ *  CBPeripheral objects can be retrieved.
+ *
+ *  @return A signal that sends an array of `CBPeripheral` objects matching the identifiers.
+ */
+- (RACSignal *)retrievePeripheralsWithIdentifiers:(NSArray *)identifiers;
+
+/**
+ *  Retrieves a list of connected peripherals that contain any of the specified services.
+ *
+ *  @param services A list of service UUIDs (represented by `CBUUID` objects).
+ *
+ *  @return A signal that sends an array of `CBPeripheral` objects containing one or more of the services.
+ */
+- (RACSignal *)retrieveConnectedPeripheralsWithServices:(NSArray *)services;
+
 @end

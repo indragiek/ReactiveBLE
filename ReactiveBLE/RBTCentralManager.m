@@ -42,7 +42,7 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"<%@: %p>", self.class, self];
+	return [NSString stringWithFormat:@"<%@:%p>", self.class, self];
 }
 
 #pragma mark - State
@@ -50,20 +50,19 @@
 - (RACSignal *)stateSignal
 {
 	@weakify(self);
-	return [[[[[RACSignal
-		defer:^{
-			@strongify(self);
-			return [RACSignal return:self.manager];
-		}]
-		concat:[[self rac_signalForSelector:@selector(centralManagerDidUpdateState:) fromProtocol:@protocol(CBCentralManagerDelegate)]
-			reduceEach:^(CBCentralManager *manager) {
-				return manager;
-			}]]
-		map:^(CBCentralManager *manager) {
-			return @(manager.state);
-		}]
-		takeUntil:self.rac_willDeallocSignal]
-		setNameWithFormat:@"%@ -stateSignal", self];
+	return [[[[[RACSignal defer:^{
+		@strongify(self);
+		return [RACSignal return:self.manager];
+	}]
+	concat:[[self rac_signalForSelector:@selector(centralManagerDidUpdateState:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+		reduceEach:^(CBCentralManager *manager) {
+			return manager;
+		}]]
+	map:^(CBCentralManager *manager) {
+		return @(manager.state);
+	}]
+	takeUntil:self.rac_willDeallocSignal]
+	setNameWithFormat:@"<%@:%p> -stateSignal", self.class, self];
 }
 
 - (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
@@ -95,7 +94,7 @@
 		filter:^BOOL(RACTuple *args) {
 			return ![args isEqual:RACTuplePack(services, options)];
 		}]]
-	setNameWithFormat:@"%@ -scanForPeripheralsWithServices: %@ options: %@", self, services, options];
+	setNameWithFormat:@"<%@:%p> -scanForPeripheralsWithServices: %@ options: %@", self.class, self, services, options];
 }
 
 - (RACSignal *)connectPeripheral:(CBPeripheral *)peripheral options:(NSDictionary *)options
@@ -133,7 +132,43 @@
 		}];
 	}]
 	subscribeOn:self.CBScheduler]
-	setNameWithFormat:@"%@ -connectToPeripheral: %@ options: %@", self, peripheral, options];
+	setNameWithFormat:@"<%@:%p> -connectToPeripheral: %@ options: %@", self.class, self, peripheral, options];
+}
+
+// Used by -retrievePeripheralsWithIdentifiers: and -retrieveConnectedPeripheralsWithServices:
+// since the method signatures are identical.
+- (RACSignal *)peripheralsSignalForSelector:(SEL)selector
+{
+	return [[[self
+		rac_signalForSelector:selector fromProtocol:@protocol(CBCentralManagerDelegate)]
+		take:1]
+		reduceEach:^(CBCentralManager *manager, NSArray *peripherals) {
+			return peripherals;
+		}];
+}
+
+- (RACSignal *)retrievePeripheralsWithIdentifiers:(NSArray *)identifiers
+{
+	return [[[RACSignal
+		defer:^{
+			RACSignal *signal = [self peripheralsSignalForSelector:@selector(centralManager:didRetrievePeripherals:)];
+			[self.manager retrievePeripheralsWithIdentifiers:identifiers];
+			return signal;
+		}]
+		subscribeOn:self.CBScheduler]
+		setNameWithFormat:@"<%@:%p> -retrievePeripheralsWithIdentifiers: %@", self.class, self, identifiers];
+}
+
+- (RACSignal *)retrieveConnectedPeripheralsWithServices:(NSArray *)services
+{
+	return [[[RACSignal
+		defer:^{
+			RACSignal *signal = [self peripheralsSignalForSelector:@selector(centralManager:didRetrieveConnectedPeripherals:)];
+			[self.manager retrieveConnectedPeripheralsWithServices:services];
+			return signal;
+		}]
+		subscribeOn:self.CBScheduler]
+		setNameWithFormat:@"<%@:%p> -retrieveConnectedPeripheralsWithServices: %@", self.class, self, services];
 }
 
 #pragma mark - CBCentralManagerDelegate
