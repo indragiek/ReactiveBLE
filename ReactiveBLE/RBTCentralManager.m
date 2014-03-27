@@ -66,7 +66,7 @@
 		reduceEach:^(CBCentralManager *manager, NSDictionary *dict) {
 			return dict;
 		}]
-		setNameWithFormat:@"RBTCentralManager -willRestoreStateSignal"];
+		setNameWithFormat:@"<%@:%p> -willRestoreStateSignal", self.class, self];
 }
 
 - (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
