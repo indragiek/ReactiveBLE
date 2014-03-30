@@ -65,6 +65,16 @@
 	setNameWithFormat:@"<%@:%p> -stateSignal", self.class, self];
 }
 
+- (RACSignal *)willRestoreStateSignal
+{
+	return [[[self
+		rac_signalForSelector:@selector(centralManager:willRestoreState:) fromProtocol:@protocol(CBCentralManagerDelegate)]
+		reduceEach:^(CBCentralManager *manager, NSDictionary *dict) {
+			return dict;
+		}]
+		setNameWithFormat:@"<%@:%p> -willRestoreStateSignal", self.class, self];
+}
+
 - (RACSignal *)scanForPeripheralsWithServices:(NSArray *)services options:(NSDictionary *)options
 {
 	NSDictionary *copiedOptions = [options copy];
