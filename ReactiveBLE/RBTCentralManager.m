@@ -50,9 +50,9 @@
 - (RACSignal *)stateSignal
 {
 	@weakify(self);
-	return [[[[[[RACSignal defer:^{
+	return [[[[[RACSignal defer:^{
 		@strongify(self);
-		return [RACSignal return:self.manager];
+		return [[RACSignal return:self.manager] deliverOn:self.CBScheduler];
 	}]
 	concat:[[self rac_signalForSelector:@selector(centralManagerDidUpdateState:) fromProtocol:@protocol(CBCentralManagerDelegate)]
 		reduceEach:^(CBCentralManager *manager) {
@@ -61,7 +61,6 @@
 	map:^(CBCentralManager *manager) {
 		return @(manager.state);
 	}]
-	subscribeOn:self.CBScheduler]
 	takeUntil:self.rac_willDeallocSignal]
 	setNameWithFormat:@"<%@:%p> -stateSignal", self.class, self];
 }
