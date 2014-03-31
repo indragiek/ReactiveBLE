@@ -52,7 +52,7 @@
 	@weakify(self);
 	return [[[[[RACSignal defer:^{
 		@strongify(self);
-		return [RACSignal return:self.manager];
+		return [[RACSignal return:self.manager] deliverOn:self.CBScheduler];
 	}]
 	concat:[[self rac_signalForSelector:@selector(centralManagerDidUpdateState:) fromProtocol:@protocol(CBCentralManagerDelegate)]
 		reduceEach:^(CBCentralManager *manager) {
