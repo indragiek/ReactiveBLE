@@ -13,6 +13,8 @@
 		0308E0D718BBF7850094E105 /* ReactiveBLE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E0BA18BBF7850094E105 /* ReactiveBLE.framework */; };
 		0308E0DD18BBF7850094E105 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0308E0DB18BBF7850094E105 /* InfoPlist.strings */; };
 		0308E16318BBFC1F0094E105 /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0308E16218BBFC1F0094E105 /* IOBluetooth.framework */; };
+		03706B2418BF9CDC00C2AC11 /* RBTCentralManager+DelegateStubs.h in Headers */ = {isa = PBXBuildFile; fileRef = 03706B2218BF9CDC00C2AC11 /* RBTCentralManager+DelegateStubs.h */; };
+		03706B2518BF9CDC00C2AC11 /* RBTCentralManager+DelegateStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = 03706B2318BF9CDC00C2AC11 /* RBTCentralManager+DelegateStubs.m */; };
 		037D986F18BE832B00586C5C /* RBTCentralManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 037D986D18BE832B00586C5C /* RBTCentralManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		037D987018BE832B00586C5C /* RBTCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 037D986E18BE832B00586C5C /* RBTCentralManager.m */; };
 		03B98D4418BEC65D00366C75 /* EXTScope.h in Headers */ = {isa = PBXBuildFile; fileRef = 03B98D4218BEC65D00366C75 /* EXTScope.h */; };
@@ -204,6 +206,8 @@
 		0308E0DC18BBF7850094E105 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0308E16218BBFC1F0094E105 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = System/Library/Frameworks/IOBluetooth.framework; sourceTree = SDKROOT; };
 		0308E16818BBFEE20094E105 /* ReactiveCocoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactiveCocoa.xcodeproj; path = ../External/ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa.xcodeproj; sourceTree = "<group>"; };
+		03706B2218BF9CDC00C2AC11 /* RBTCentralManager+DelegateStubs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RBTCentralManager+DelegateStubs.h"; sourceTree = "<group>"; };
+		03706B2318BF9CDC00C2AC11 /* RBTCentralManager+DelegateStubs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RBTCentralManager+DelegateStubs.m"; sourceTree = "<group>"; };
 		037D986D18BE832B00586C5C /* RBTCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBTCentralManager.h; sourceTree = "<group>"; };
 		037D986E18BE832B00586C5C /* RBTCentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBTCentralManager.m; sourceTree = "<group>"; };
 		03B98D4218BEC65D00366C75 /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTScope.h; path = External/libextobjc/extobjc/EXTScope.h; sourceTree = SOURCE_ROOT; };
@@ -291,6 +295,8 @@
 				0308E0C418BBF7850094E105 /* Supporting Files */,
 				037D986D18BE832B00586C5C /* RBTCentralManager.h */,
 				037D986E18BE832B00586C5C /* RBTCentralManager.m */,
+				03706B2218BF9CDC00C2AC11 /* RBTCentralManager+DelegateStubs.h */,
+				03706B2318BF9CDC00C2AC11 /* RBTCentralManager+DelegateStubs.m */,
 			);
 			path = ReactiveBLE;
 			sourceTree = "<group>";
@@ -389,6 +395,7 @@
 			files = (
 				037D986F18BE832B00586C5C /* RBTCentralManager.h in Headers */,
 				03B98D5818BEC84100366C75 /* ReactiveBLE.h in Headers */,
+				03706B2418BF9CDC00C2AC11 /* RBTCentralManager+DelegateStubs.h in Headers */,
 				03B98D4418BEC65D00366C75 /* EXTScope.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -616,6 +623,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03706B2518BF9CDC00C2AC11 /* RBTCentralManager+DelegateStubs.m in Sources */,
 				03B98D4518BEC65D00366C75 /* EXTScope.m in Sources */,
 				037D987018BE832B00586C5C /* RBTCentralManager.m in Sources */,
 			);
