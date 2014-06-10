@@ -168,8 +168,19 @@
 {
 	return [[[RACSignal
 		defer:^{
-			RACSignal *signal = [self peripheralsSignalForSelector:@selector(centralManager:didRetrievePeripherals:)];
-			[self.manager retrievePeripheralsWithIdentifiers:identifiers];
+      if ([self.manager respondsToSelector:@selector(retrievePeripheralsWithIdentifiers:)]) {
+        return [RACSignal return:[self.manager retrievePeripheralsWithIdentifiers:identifiers]];
+      }
+      else {
+        // iOS < 7
+        RACSignal *signal = [self peripheralsSignalForSelector:@selector(centralManager:didRetrievePeripherals:)];
+        [self.manager retrievePeripherals:[identifiers.rac_sequence map:^CFUUIDRef(NSUUID *identifierUUID) {
+          CFUUIDRef UUIDRef = CFUUIDCreateFromString(NULL, (CFStringRef)identifierUUID.UUIDString);
+
+          id __autoreleasing result = CFBridgingRelease(UUIDRef);
+          return (__bridge CFUUIDRef)result;
+        }].array];
+      }
 			return signal;
 		}]
 		subscribeOn:self.CBScheduler]

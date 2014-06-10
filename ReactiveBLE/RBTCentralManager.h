@@ -78,6 +78,8 @@
  *  @param identifiers A list of peripheral identifiers (represented by NSUUID objects) from which 
  *  CBPeripheral objects can be retrieved.
  *
+ *  @note This method is compatible with iOS6 and iOS7.
+ *
  *  @return A signal that sends an array of `CBPeripheral` objects matching the identifiers.
  */
 - (RACSignal *)retrievePeripheralsWithIdentifiers:(NSArray *)identifiers;
