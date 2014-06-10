@@ -20,6 +20,8 @@
  *
  *  @param options Optional dictionary of options as described in "Central Manager Initialization Options"
  *  in the `CBCentralManager` documentation.
+ * 
+ *  @note The options parameter won't be used when running iOS6 since that API was added in iOS7.
  *
  *  @return A new instance of `RBTCentralManager`
  */
@@ -76,6 +78,8 @@
  *  @param identifiers A list of peripheral identifiers (represented by NSUUID objects) from which 
  *  CBPeripheral objects can be retrieved.
  *
+ *  @note This method is compatible with iOS6 and iOS7.
+ *
  *  @return A signal that sends an array of `CBPeripheral` objects matching the identifiers.
  */
 - (RACSignal *)retrievePeripheralsWithIdentifiers:(NSArray *)identifiers;
@@ -84,6 +88,8 @@
  *  Retrieves a list of connected peripherals that contain any of the specified services.
  *
  *  @param services A list of service UUIDs (represented by `CBUUID` objects).
+ *
+ *  @warning This method is only available on iOS7.
  *
  *  @return A signal that sends an array of `CBPeripheral` objects containing one or more of the services.
  */

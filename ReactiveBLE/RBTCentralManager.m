@@ -28,7 +28,14 @@
 	if ((self = [super init])) {
 		dispatch_queue_t queue = dispatch_queue_create("com.indragie.RBTCentralManager.CoreBluetoothQueue", DISPATCH_QUEUE_SERIAL);
 		_CBScheduler = [[RACTargetQueueScheduler alloc] initWithName:@"com.indragie.RBTCentralManager.CoreBluetoothScheduler" targetQueue:queue];
-		_manager = [[CBCentralManager alloc] initWithDelegate:self queue:queue options:options];
+
+        if ([CBCentralManager instancesRespondToSelector:@selector(initWithDelegate:queue:options:)]) {
+            _manager = [[CBCentralManager alloc] initWithDelegate:self queue:queue options:options];
+        }
+        else {
+            // iOS < 7
+            _manager = [[CBCentralManager alloc] initWithDelegate:self queue:queue];
+        }
 	}
 	return self;
 }
@@ -161,8 +168,19 @@
 {
 	return [[[RACSignal
 		defer:^{
-			RACSignal *signal = [self peripheralsSignalForSelector:@selector(centralManager:didRetrievePeripherals:)];
-			[self.manager retrievePeripheralsWithIdentifiers:identifiers];
+      if ([self.manager respondsToSelector:@selector(retrievePeripheralsWithIdentifiers:)]) {
+        return [RACSignal return:[self.manager retrievePeripheralsWithIdentifiers:identifiers]];
+      }
+      else {
+        // iOS < 7
+        RACSignal *signal = [self peripheralsSignalForSelector:@selector(centralManager:didRetrievePeripherals:)];
+        [self.manager retrievePeripherals:[identifiers.rac_sequence map:^CFUUIDRef(NSUUID *identifierUUID) {
+          CFUUIDRef UUIDRef = CFUUIDCreateFromString(NULL, (CFStringRef)identifierUUID.UUIDString);
+
+          id __autoreleasing result = CFBridgingRelease(UUIDRef);
+          return (__bridge CFUUIDRef)result;
+        }].array];
+      }
 			return signal;
 		}]
 		subscribeOn:self.CBScheduler]
