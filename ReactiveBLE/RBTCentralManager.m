@@ -28,7 +28,14 @@
 	if ((self = [super init])) {
 		dispatch_queue_t queue = dispatch_queue_create("com.indragie.RBTCentralManager.CoreBluetoothQueue", DISPATCH_QUEUE_SERIAL);
 		_CBScheduler = [[RACTargetQueueScheduler alloc] initWithName:@"com.indragie.RBTCentralManager.CoreBluetoothScheduler" targetQueue:queue];
-		_manager = [[CBCentralManager alloc] initWithDelegate:self queue:queue options:options];
+
+        if ([CBCentralManager instancesRespondToSelector:@selector(initWithDelegate:queue:options:)]) {
+            _manager = [[CBCentralManager alloc] initWithDelegate:self queue:queue options:options];
+        }
+        else {
+            // iOS < 7
+            _manager = [[CBCentralManager alloc] initWithDelegate:self queue:queue];
+        }
 	}
 	return self;
 }

@@ -20,6 +20,8 @@
  *
  *  @param options Optional dictionary of options as described in "Central Manager Initialization Options"
  *  in the `CBCentralManager` documentation.
+ * 
+ *  @note The options parameter won't be used when running iOS6 since that API was added in iOS7.
  *
  *  @return A new instance of `RBTCentralManager`
  */
