@@ -89,6 +89,8 @@
  *
  *  @param services A list of service UUIDs (represented by `CBUUID` objects).
  *
+ *  @warning This method is only available on iOS7.
+ *
  *  @return A signal that sends an array of `CBPeripheral` objects containing one or more of the services.
  */
 - (RACSignal *)retrieveConnectedPeripheralsWithServices:(NSArray *)services;
